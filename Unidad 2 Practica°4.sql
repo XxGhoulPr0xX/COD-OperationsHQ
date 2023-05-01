@@ -2,7 +2,10 @@
 	Generar una funcion escalar que reciba un curp valida y retorne la entidad de nacimiento:
 	Ejemplo: TOAO860920H'PL'RLC04 retorna puebla
 */ 
-ALTER FUNCTION obtenerEntidadNacimiento(@curp CHAR(18))
+IF OBJECT_ID('obtenerEntidadNacimiento', 'FN') IS NOT NULL
+    DROP FUNCTION obtenerEntidadNacimiento;
+GO
+CREATE FUNCTION obtenerEntidadNacimiento(@curp CHAR(18))
 RETURNS NVARCHAR(50)
 AS
 BEGIN

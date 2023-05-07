@@ -1,9 +1,9 @@
 use VETERINARIA
-/* Practica °9:
+/* Practica Â°9:
 	Crear una funcion escalar que
 	regrese el promedio venta diaria en un determinado mes
 */
-ALTER FUNCTION VentaAñoMes(@mes int,@dia int,@año int)
+ALTER FUNCTION VentaAÃ±oMes(@mes int,@dia int,@aÃ±o int)
 RETURNS int
 AS
 BEGIN
@@ -14,10 +14,5 @@ BEGIN
 	return @ventas
 END
 
-select AVG(t.costo) Promedio from Detalles d
-inner join TipoDeServicio t on t.id=d.Servicio_id
-where MONTH(d.Fecha)='01' and DAY(d.fecha)='02'
-group by DAY(d.fecha)
-
-select dbo.VentaAñoMes('01','02') Promedio
+select dbo.VentaAÃ±oMes('01','02') Promedio
 select * from Detalles

@@ -1,4 +1,5 @@
 import tkinter as tk
+from matplotlib import pyplot as plt
 from matplotlib.figure import Figure
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 
@@ -9,11 +10,17 @@ class Graficar:
         self.ax = self.fig.add_subplot(111)
 
         # Configurar límites de los ejes
-        self.ax.set_xlim(0, 20)
-        self.ax.set_ylim(0, 1)  # Ajustar el límite superior para acomodar la nueva línea
+        self.ax.set_xlim(0, 18)
+        self.ax.set_ylim(0, 3)  # Ajustar el límite superior para acomodar la nueva línea
 
         # Inicialmente no hay datos en la gráfica
-        self.line, = self.ax.plot([], [])
+        self.pierna_der, = self.ax.plot([], [], color='black')
+        self.pierna_izq, = self.ax.plot([], [], color='black')
+        self.torso, = self.ax.plot([], [], color='black')
+        self.cabeza = plt.Circle((0, 2.3), 0.3, color='black', fill=True)  # Agregar la circunferencia
+        self.brazo_izq, = self.ax.plot([], [], color='black')
+        self.brazo_der, = self.ax.plot([], [], color='black')
+
         self.counter = 0  # Inicializar el contador en 0
 
         # Crear el widget de lienzo para la gráfica
@@ -23,33 +30,61 @@ class Graficar:
         self.ax.axvline(x=6, color='black', linestyle='--')
         self.ax.axvline(x=12, color='black', linestyle='--')
         self.ax.axvline(x=18, color='black', linestyle='--')
+        self.ax.add_artist(self.cabeza)  # Agregar la circunferencia a la gráfica
+        self.ax.add_artist(self.brazo_izq)  # Agregar el brazo izquierdo a la gráfica
+        self.ax.add_artist(self.brazo_der)  # Agregar el brazo derecho a la gráfica
 
-    def dibujar(self, x, y):
+    def dibujar(self, pierna_der_x, pierna_der_y, pierna_izq_x, pierna_izq_y, x3, y3, circle_x, circle_y, arm_izq_x, arm_izq_y, arm_der_x, arm_der_y):
         # Actualizar datos de la gráfica
-        self.line.set_data(x, y)
+        self.pierna_der.set_data(pierna_der_x, pierna_der_y)
+        self.pierna_izq.set_data(pierna_izq_x, pierna_izq_y)
+        self.torso.set_data(x3, y3)
+        self.cabeza.center = (circle_x, circle_y)  # Actualizar la posición de la circunferencia
+        self.brazo_izq.set_data(arm_izq_x, arm_izq_y)  # Actualizar posición del brazo izquierdo
+        self.brazo_der.set_data(arm_der_x, arm_der_y)  # Actualizar posición del brazo derecho
 
         # Redibujar la gráfica
         self.ax.figure.canvas.draw()
 
     def actualizar_botones(self):
         # Habilitar o deshabilitar los botones según el valor del contador
-        self.btn_avanzar["state"] = tk.NORMAL if self.counter < 3 else tk.DISABLED
-        self.btn_atras["state"] = tk.NORMAL if self.counter> 0 else tk.DISABLED
+        self.btn_avanzar["state"] = tk.NORMAL if self.counter < 9 else tk.DISABLED
+        self.btn_atras["state"] = tk.NORMAL if self.counter > 0 else tk.DISABLED
 
     def avanzar(self):
-        if self.counter < 3:  # Verificar el límite de 0
+        if self.counter < 9:  # Verificar el límite de 0
             self.counter += 1
-            x = [0, self.counter * 6]  # Sumar 6 al eje x
-            y = [0, 1]
-            self.dibujar(x, y)
+            pierna_der_x = [self.counter * 2 - 2, self.counter * 2]  # Sumar 6 al eje x
+            pierna_der_y = [0, 1]
+            pierna_izq_x = [self.counter * 2 + 2, self.counter * 2]  # Sumar 6 al eje x
+            pierna_izq_y = [0, 1]
+            torso_x = [self.counter * 2, self.counter * 2]
+            torso_y = [1, 2]
+            cabeza_x = self.counter * 2  # Nueva posición x de la circunferencia
+            cabeza_y = 2.3  # Nueva posición y de la circunferencia
+            arm_izq_x = [torso_x[0], torso_x[0] - 1]  # Nueva posición x del brazo izquierdo
+            arm_izq_y = [torso_y[0] + 0.5, torso_y[0]]  # Nueva posición y del brazo izquierdo
+            arm_der_x = [torso_x[0], torso_x[0] + 1]  # Nueva posición x del brazo derecho
+            arm_der_y = [torso_y[0] + 0.5, torso_y[0]]  # Nueva posición y del brazo derecho
+            self.dibujar(pierna_der_x, pierna_der_y, pierna_izq_x, pierna_izq_y, torso_x, torso_y, cabeza_x, cabeza_y, arm_izq_x, arm_izq_y, arm_der_x, arm_der_y)
             self.actualizar_botones()
 
     def atras(self):
-        if self.counter >= 0:  # Verificar el límite de 0
+        if self.counter > 0:  # Verificar el límite de 0
             self.counter -= 1
-            x = [0, self.counter * 6]  # Restar 6 al eje x
-            y = [0, 1]
-            self.dibujar(x, y)
+            pierna_der_x = [self.counter * 2 - 2, self.counter * 2]  # Sumar 6 al eje x
+            pierna_der_y = [0, 1]
+            pierna_izq_x = [self.counter * 2 + 2, self.counter * 2]  # Sumar 6 al eje x
+            pierna_izq_y = [0, 1]
+            torso_x = [self.counter * 2, self.counter * 2]
+            torso_y = [1, 2]
+            cabeza_x = self.counter * 2  # Nueva posición x de la circunferencia
+            cabeza_y = 2.3  # Nueva posición y de la circunferencia
+            arm_izq_x = [torso_x[0], torso_x[0] - 1]  # Nueva posición x del brazo izquierdo
+            arm_izq_y = [torso_y[0] + 0.5, torso_y[0]]  # Nueva posición y del brazo izquierdo
+            arm_der_x = [torso_x[0], torso_x[0] + 1]  # Nueva posición x del brazo derecho
+            arm_der_y = [torso_y[0] + 0.5, torso_y[0]]  # Nueva posición y del brazo derecho
+            self.dibujar(pierna_der_x, pierna_der_y, pierna_izq_x,pierna_izq_y, torso_x, torso_y, cabeza_x, cabeza_y, arm_izq_x, arm_izq_y, arm_der_x, arm_der_y)
             self.actualizar_botones()
 
 class Interfaz:
@@ -67,9 +102,7 @@ class Interfaz:
         frame_izquierdo = tk.Frame(self.ventana)
         frame_izquierdo.pack(side=tk.LEFT)
 
-        # Crear botones en el marco izquierdo
         self.beta = Graficar(self.frame_derecho)  # Crear una instancia de Graficar
-        # Crear botones en el marco izquierdo
         self.beta.btn_avanzar = tk.Button(frame_izquierdo, text="Avanzar", command=self.beta.avanzar)
         self.beta.btn_avanzar.pack(pady=0, padx=50)  # Añadir espacio en la parte inferior
 
@@ -81,11 +114,13 @@ class Interfaz:
     def run(self):
         self.ventana.mainloop()
 
+
 class Principal:
     def disparador(self):
         alpha = Interfaz()
         alpha.run()
 
-Charlie = Principal()
-Charlie.disparador()
 
+if __name__ == "__main__":
+    app = Principal()
+    app.disparador()

@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Principal</class>
+ <widget class="QMainWindow" name="Principal">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>375</width>
+    <height>171</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Principal</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(98, 108, 235);</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QPushButton" name="btnActivar">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>40</y>
+      <width>93</width>
+      <height>28</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(203, 203, 203);</string>
+    </property>
+    <property name="text">
+     <string>Activar</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnDesactivar">
+    <property name="geometry">
+     <rect>
+      <x>210</x>
+      <y>40</y>
+      <width>93</width>
+      <height>28</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(203, 203, 203);</string>
+    </property>
+    <property name="text">
+     <string>Desactivar</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lbMensaje">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>100</y>
+      <width>281</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(42, 255, 56);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>375</width>
+     <height>26</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuPrincipal">
+    <property name="title">
+     <string>Principal</string>
+    </property>
+    <addaction name="actionRegistros"/>
+    <addaction name="actionEjercicios"/>
+    <addaction name="separator"/>
+    <addaction name="MSalir"/>
+   </widget>
+   <addaction name="menuPrincipal"/>
+  </widget>
+  <action name="actionRegistros">
+   <property name="text">
+    <string>Registros</string>
+   </property>
+  </action>
+  <action name="actionEjercicios">
+   <property name="text">
+    <string>Ejercicios</string>
+   </property>
+  </action>
+  <action name="MSalir">
+   <property name="text">
+    <string>Salir</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Del</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

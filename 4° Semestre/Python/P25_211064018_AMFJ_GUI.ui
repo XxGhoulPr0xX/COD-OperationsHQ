@@ -1,0 +1,1023 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>766</width>
+    <height>507</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Control de Estudiantes</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QTabWidget" name="tabPestanas">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>20</y>
+      <width>771</width>
+      <height>561</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Arial</family>
+      <pointsize>9</pointsize>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(232, 232, 232);</string>
+    </property>
+    <property name="currentIndex">
+     <number>2</number>
+    </property>
+    <widget class="QWidget" name="tabMRegistros">
+     <attribute name="title">
+      <string>Mostrar Registros</string>
+     </attribute>
+     <widget class="QTableWidget" name="ListaProducto">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>90</y>
+        <width>601</width>
+        <height>231</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Arial</family>
+       </font>
+      </property>
+      <property name="autoFillBackground">
+       <bool>true</bool>
+      </property>
+      <column>
+       <property name="text">
+        <string/>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Codigo</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Nomb. Producto</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Precio</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Nomb.Fabricante</string>
+       </property>
+      </column>
+     </widget>
+     <widget class="QPushButton" name="btnMostrarR">
+      <property name="geometry">
+       <rect>
+        <x>470</x>
+        <y>330</y>
+        <width>151</width>
+        <height>28</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Arial</family>
+        <pointsize>9</pointsize>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(0, 85, 255);
+color: rgb(255, 255, 255);</string>
+      </property>
+      <property name="text">
+       <string>Mostrar Registros</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_16">
+      <property name="geometry">
+       <rect>
+        <x>240</x>
+        <y>70</y>
+        <width>71</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>FABRICANTE</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_17">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>70</y>
+        <width>61</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>PRODUCTO</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btnConsultas3">
+      <property name="geometry">
+       <rect>
+        <x>660</x>
+        <y>60</y>
+        <width>75</width>
+        <height>24</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Consulta 3</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btnConsultas4">
+      <property name="geometry">
+       <rect>
+        <x>660</x>
+        <y>90</y>
+        <width>75</width>
+        <height>24</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Consulta 4</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btnConsultas1">
+      <property name="geometry">
+       <rect>
+        <x>660</x>
+        <y>0</y>
+        <width>75</width>
+        <height>24</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Consulta 1</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btnConsultas5">
+      <property name="geometry">
+       <rect>
+        <x>660</x>
+        <y>120</y>
+        <width>75</width>
+        <height>24</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Consulta 5</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btnConsulta6">
+      <property name="geometry">
+       <rect>
+        <x>660</x>
+        <y>150</y>
+        <width>75</width>
+        <height>24</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Consulta 6</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btnConsulta7">
+      <property name="geometry">
+       <rect>
+        <x>660</x>
+        <y>180</y>
+        <width>75</width>
+        <height>24</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Consulta 7</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btnConsulta8">
+      <property name="geometry">
+       <rect>
+        <x>660</x>
+        <y>210</y>
+        <width>75</width>
+        <height>24</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Consulta 8</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btnConsulta9">
+      <property name="geometry">
+       <rect>
+        <x>660</x>
+        <y>240</y>
+        <width>75</width>
+        <height>24</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Consulta 9</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btnConsulta10">
+      <property name="geometry">
+       <rect>
+        <x>660</x>
+        <y>270</y>
+        <width>75</width>
+        <height>24</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Consulta 10</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btnConsulta11">
+      <property name="geometry">
+       <rect>
+        <x>660</x>
+        <y>300</y>
+        <width>75</width>
+        <height>24</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Consulta 11</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btnConsulta12">
+      <property name="geometry">
+       <rect>
+        <x>660</x>
+        <y>330</y>
+        <width>75</width>
+        <height>24</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Consulta 12</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btnConsulta2">
+      <property name="geometry">
+       <rect>
+        <x>660</x>
+        <y>30</y>
+        <width>75</width>
+        <height>24</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Consulta 2</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="tabBuscar">
+     <attribute name="title">
+      <string>Buscar</string>
+     </attribute>
+     <widget class="QTableWidget" name="tw_buscar">
+      <property name="geometry">
+       <rect>
+        <x>90</x>
+        <y>120</y>
+        <width>521</width>
+        <height>231</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Arial</family>
+       </font>
+      </property>
+      <column>
+       <property name="text">
+        <string/>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Codigo</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Nomb.Producto</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Precio</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Nombre Fabricante</string>
+       </property>
+      </column>
+     </widget>
+     <widget class="QPushButton" name="btnBuscarProducto">
+      <property name="geometry">
+       <rect>
+        <x>310</x>
+        <y>10</y>
+        <width>93</width>
+        <height>28</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Arial</family>
+        <pointsize>9</pointsize>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(0, 85, 255);
+color: rgb(255, 255, 255);</string>
+      </property>
+      <property name="text">
+       <string>Buscar</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="lnCtrl">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>16</y>
+        <width>102</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Arial</family>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Código</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="txtCodigoBuscar">
+      <property name="geometry">
+       <rect>
+        <x>140</x>
+        <y>10</y>
+        <width>154</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Arial</family>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(212, 212, 212);</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_4">
+      <property name="geometry">
+       <rect>
+        <x>100</x>
+        <y>90</y>
+        <width>71</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>FABRICANTE</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_5">
+      <property name="geometry">
+       <rect>
+        <x>210</x>
+        <y>90</y>
+        <width>81</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>PRODUCTO</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="tabInsertar">
+     <attribute name="title">
+      <string>Insertar</string>
+     </attribute>
+     <widget class="QWidget" name="verticalLayoutWidget">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>10</y>
+        <width>111</width>
+        <height>181</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout">
+       <item>
+        <widget class="QLabel" name="label_2">
+         <property name="font">
+          <font>
+           <family>Arial</family>
+           <pointsize>9</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Código</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="label">
+         <property name="font">
+          <font>
+           <family>Arial</family>
+           <pointsize>9</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Nomb.Producto</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_10">
+         <property name="font">
+          <font>
+           <family>Arial</family>
+           <pointsize>9</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Precio</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_3">
+         <property name="font">
+          <font>
+           <family>Arial</family>
+           <pointsize>9</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Nomb.Fabircante</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="verticalLayoutWidget_2">
+      <property name="geometry">
+       <rect>
+        <x>140</x>
+        <y>10</y>
+        <width>321</width>
+        <height>181</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_2">
+       <item>
+        <widget class="QLineEdit" name="txtCodigoProducto">
+         <property name="font">
+          <font>
+           <family>Arial</family>
+           <pointsize>9</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="txtNombProducto">
+         <property name="font">
+          <font>
+           <family>Arial</family>
+           <pointsize>9</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="txtPrecio">
+         <property name="font">
+          <font>
+           <family>Arial</family>
+           <pointsize>9</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="txtNombreFabricanteProducto">
+         <property name="font">
+          <font>
+           <family>Arial</family>
+           <pointsize>9</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QPushButton" name="btnGuardar">
+      <property name="geometry">
+       <rect>
+        <x>490</x>
+        <y>20</y>
+        <width>93</width>
+        <height>28</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Arial</family>
+        <pointsize>9</pointsize>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(0, 85, 255);
+color: rgb(255, 255, 255);</string>
+      </property>
+      <property name="text">
+       <string>Guardar</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="tabModificar">
+     <attribute name="title">
+      <string>Modificar</string>
+     </attribute>
+     <widget class="QWidget" name="verticalLayoutWidget_4">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>111</width>
+        <height>181</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_4">
+       <item>
+        <widget class="QLabel" name="label_8">
+         <property name="font">
+          <font>
+           <family>Arial</family>
+           <pointsize>9</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Nomb.Producto</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_9">
+         <property name="font">
+          <font>
+           <family>Arial</family>
+           <pointsize>9</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Precio</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_15">
+         <property name="font">
+          <font>
+           <family>Arial</family>
+           <pointsize>9</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Fabricante</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="verticalLayoutWidget_3">
+      <property name="geometry">
+       <rect>
+        <x>130</x>
+        <y>10</y>
+        <width>321</width>
+        <height>181</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_3">
+       <item>
+        <widget class="QLineEdit" name="txtNomProModif">
+         <property name="font">
+          <font>
+           <family>Arial</family>
+           <pointsize>9</pointsize>
+          </font>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="txtPrecioModif">
+         <property name="font">
+          <font>
+           <family>Arial</family>
+           <pointsize>9</pointsize>
+          </font>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="txtFabModif">
+         <property name="font">
+          <font>
+           <family>Arial</family>
+           <pointsize>9</pointsize>
+          </font>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QLabel" name="label_6">
+      <property name="geometry">
+       <rect>
+        <x>500</x>
+        <y>10</y>
+        <width>109</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Arial</family>
+        <pointsize>9</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Código</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="txtCodigoModif">
+      <property name="geometry">
+       <rect>
+        <x>490</x>
+        <y>40</y>
+        <width>131</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Arial</family>
+        <pointsize>9</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(212, 212, 212);</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btnActualizar">
+      <property name="geometry">
+       <rect>
+        <x>490</x>
+        <y>160</y>
+        <width>131</width>
+        <height>28</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Arial</family>
+        <pointsize>9</pointsize>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(0, 85, 255);
+color: rgb(255, 255, 255);</string>
+      </property>
+      <property name="text">
+       <string>Actualizar</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btnBuscarEst2">
+      <property name="geometry">
+       <rect>
+        <x>490</x>
+        <y>90</y>
+        <width>131</width>
+        <height>28</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Arial</family>
+        <pointsize>9</pointsize>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(0, 85, 255);
+color: rgb(255, 255, 255);</string>
+      </property>
+      <property name="text">
+       <string>Buscar</string>
+      </property>
+     </widget>
+     <widget class="QTableWidget" name="tw_Modificar">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>200</y>
+        <width>731</width>
+        <height>231</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Arial</family>
+       </font>
+      </property>
+      <column>
+       <property name="text">
+        <string/>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Codigo</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Nomb.Producto</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Precio</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Nomb.Fabricante</string>
+       </property>
+      </column>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="tabBorrar">
+     <attribute name="title">
+      <string>Borrar</string>
+     </attribute>
+     <widget class="QPushButton" name="btnBuscarEliminar">
+      <property name="geometry">
+       <rect>
+        <x>430</x>
+        <y>50</y>
+        <width>93</width>
+        <height>28</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Arial</family>
+        <pointsize>9</pointsize>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(0, 85, 255);
+color: rgb(255, 255, 255);</string>
+      </property>
+      <property name="text">
+       <string>Buscar</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btnEliminarEst">
+      <property name="geometry">
+       <rect>
+        <x>430</x>
+        <y>120</y>
+        <width>93</width>
+        <height>28</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Arial</family>
+        <pointsize>9</pointsize>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(0, 85, 255);
+color: rgb(255, 255, 255);</string>
+      </property>
+      <property name="text">
+       <string>Eliminar</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_13">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>131</y>
+        <width>106</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Arial</family>
+        <pointsize>9</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Precio</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_12">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>80</y>
+        <width>106</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Arial</family>
+        <pointsize>9</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Nomb.Producto</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_11">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>30</y>
+        <width>106</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Arial</family>
+        <pointsize>9</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Código</string>
+      </property>
+     </widget>
+     <widget class="QTextEdit" name="textEdit_3">
+      <property name="geometry">
+       <rect>
+        <x>140</x>
+        <y>125</y>
+        <width>241</width>
+        <height>32</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Arial</family>
+        <pointsize>9</pointsize>
+       </font>
+      </property>
+     </widget>
+     <widget class="QTextEdit" name="textEdit_2">
+      <property name="geometry">
+       <rect>
+        <x>140</x>
+        <y>75</y>
+        <width>241</width>
+        <height>32</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Arial</family>
+        <pointsize>9</pointsize>
+       </font>
+      </property>
+     </widget>
+     <widget class="QTableWidget" name="tw_Eliminiar">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>200</y>
+        <width>731</width>
+        <height>231</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Arial</family>
+       </font>
+      </property>
+      <column>
+       <property name="text">
+        <string/>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Código</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Nomb.Producto</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Precio</string>
+       </property>
+      </column>
+     </widget>
+     <widget class="QLineEdit" name="txtCodigoElim">
+      <property name="geometry">
+       <rect>
+        <x>140</x>
+        <y>30</y>
+        <width>241</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Arial</family>
+        <pointsize>9</pointsize>
+        <bold>true</bold>
+       </font>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_14">
+      <property name="geometry">
+       <rect>
+        <x>90</x>
+        <y>180</y>
+        <width>71</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>PRODUCTO</string>
+      </property>
+     </widget>
+    </widget>
+   </widget>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

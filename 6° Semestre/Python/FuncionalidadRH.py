@@ -1,54 +1,70 @@
-from tkinter import filedialog, IntVar
-import tkinter as tk
-from PIL import Image, ImageTk
 import os
+from tkinter import filedialog, IntVar, messagebox
+import tkinter as tk
+from PIL import Image as PILImage
+from PIL import ImageTk
 import cv2
+import threading
+from reportlab.lib.pagesizes import letter
+from reportlab.platypus import SimpleDocTemplate, Image as ReportLabImage, Spacer, Paragraph
+from reportlab.lib import colors
+from reportlab.lib.styles import getSampleStyleSheet
+import tempfile
+from reportlab.platypus import PageBreak
 
 class Funcionalidad:
     def __init__(self, interfaz):
         self.alpha = interfaz
-        self.contador = 0
-        self.url = 'https://192.168.0.202:8080/shot.jpg'
-        self.cap = cv2.VideoCapture(self.url)  # Inicializa la captura de la cámara
+        self.url = 0#'https://192.168.129.123:8080/shot.jpg'
+        self.cap = cv2.VideoCapture(self.url)
         self.numImage = IntVar()
         self.numImage.set(0)
-        self.camara_activa = False  # Variable para controlar si la cámara está activa
-        self.cap_visible = False  # Variable para controlar si el frame de la cámara es visible o no
-
-
+        self.camara_activa = False
+        self.cap_visible = False
+        self.update_interval = 100
+        self.capture_thread = None
+        self.capture_active = False
+        self.saved_image_path = None
+        self.empleados = {}
     def activateImagen(self):
-        self.camara_activa = not self.camara_activa  # Invierte el valor de la cámara
-        
+        self.camara_activa = not self.camara_activa
         if self.camara_activa:
-            if not self.cap.isOpened():  # Verifica si la cámara no está abierta
-                self.iniciarCamara()  # Inicializa la cámara
+            if not self.cap.isOpened():
+                self.capture_thread = threading.Thread(target=self.iniciarCamara)
+                self.capture_thread.daemon = True
+                self.capture_thread.start()
             else:
-                self.cargarCamaraEnFrame()  # Carga la cámara en el frame
-            self.alpha.btnActivar.config(text="Desactivar")  # Cambiar el texto del botón
-            self.alpha.btnTomarFoto.config(state=tk.NORMAL)  # Habilitar el botón de tomar foto
-            self.alpha.lblCamara.pack()  # Hacer visible el frame de la cámara
+                self.capture_active = True
+                self.alpha.btnActivar.config(text="Desactivar")
+                self.alpha.btnTomarFoto.config(state=tk.NORMAL)
+                self.alpha.lblCamara.pack()
         else:
-            if self.cap.isOpened():  # Verifica si la cámara está abierta
-                self.cap.release()  # Libera la cámara
-            self.alpha.btnActivar.config(text="Activar")  # Cambiar el texto del botón
-            self.alpha.btnTomarFoto.config(state=tk.DISABLED)  # Deshabilitar el botón de tomar foto
-            self.alpha.lblCamara.pack_forget()  # Ocultar el frame de la cámara
-
+            self.capture_active = False
+            self.alpha.btnActivar.config(text="Activar")
+            self.alpha.btnTomarFoto.config(state=tk.DISABLED)
+            self.alpha.lblCamara.pack_forget()
 
     def iniciarCamara(self):
-        self.cap.open(self.url)
-        self.callback()
+        try:
+            self.cap.open(self.url)
+            while self.camara_activa:
+                ret, frame = self.cap.read()
+                if ret:
+                    if self.capture_active:
+                        self.cargarCamaraEnFrame(frame)
+                else:
+                    self.cap.release()
+                    break
+        except Exception as e:
+            print("Error al iniciar la cámara:", str(e))
 
-    def cargarCamaraEnFrame(self):
-        ret, frame = self.cap.read()
-        if ret:
-            img = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
-            img = cv2.resize(img, (200, 200))  # Redimensiona la imagen a 200x200
-            img = Image.fromarray(img)
-            tkimage = ImageTk.PhotoImage(img)
-            self.alpha.lblCamara.configure(image=tkimage)
-            self.alpha.lblCamara.image = tkimage
-
+    def cargarCamaraEnFrame(self, frame):
+        img = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+        img = cv2.resize(img, (200, 200))
+        img = PILImage.fromarray(img)
+        tkimage = ImageTk.PhotoImage(img)
+        self.alpha.lblCamara.configure(image=tkimage)
+        self.alpha.lblCamara.image = tkimage
 
     def setImagen(self):
         try:
@@ -56,36 +72,189 @@ class Funcionalidad:
                 defaultextension=".jpg",
                 filetypes=[("JPEG files", "*.jpg"), ("All files", "*.*")],
                 initialfile=f"image{self.numImage.get()}.jpg",
-                title="Guardar Imagen"  # Cambia el título del cuadro de diálogo
+                title="Guardar Imagen"
             )
             if directorio:
-                os.chdir(os.path.dirname(directorio))  # Cambia al directorio donde se guardará la imagen
+                os.chdir(os.path.dirname(directorio))
                 self.cap.open(self.url)
                 ret, frame = self.cap.read()
                 if ret:
                     img = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
-                    img = cv2.resize(img, (200, 200))  # Redimensiona la imagen a 400x400
-                    img = Image.fromarray(img)
+                    img = cv2.resize(img, (200, 200))
+                    img = PILImage.fromarray(img)
                     tkimage = ImageTk.PhotoImage(img)
                     self.alpha.lblCamara.configure(image=tkimage)
                     self.alpha.lblCamara.image = tkimage
-                    saved_image_path = os.path.join(os.getcwd(), os.path.basename(directorio))
-                    cv2.imwrite(saved_image_path, frame)
+                    self.saved_image_path = os.path.join(os.getcwd(), os.path.basename(directorio))
+                    cv2.imwrite(self.saved_image_path, frame)
                     self.numImage.set(self.numImage.get() + 1)
-                    print("Imagen guardada en:", saved_image_path)
+                    print("Imagen guardada en:", self.saved_image_path)
+                    self.verificarDatos()
         except Exception as e:
             print("Error al guardar la imagen:", str(e))
 
     def callback(self):
-        self.cap.open(self.url)
-        ret, frame = self.cap.read()
-        if ret:
-            img=cv2.cvtColor(frame,cv2.COLOR_BGR2RGB)
-            img = cv2.resize(img, (200, 200)) # Redimensiona la imagen a 400x400
-            img=Image.fromarray(img)
-            tkimage=ImageTk.PhotoImage(img)
-            self.alpha.lblCamara.configure(image=tkimage)
-            self.alpha.lblCamara.image = tkimage
-            self.alpha.derecho.after(10,self.callback)
+        try:
+            self.cap.open(self.url)
+            ret, frame = self.cap.read()
+            if ret:
+                img = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+                img = cv2.resize(img, (200, 200))
+                img = PILImage.fromarray(img)
+                tkimage = ImageTk.PhotoImage(img)
+                self.alpha.lblCamara.configure(image=tkimage)
+                self.alpha.lblCamara.image = tkimage
+                self.alpha.derecho.after(self.update_interval, self.callback)
+            else:
+                self.cap.release()
+        except Exception as e:
+            print("Error al actualizar la imagen de la cámara:", str(e))
+
+    def guardarEmpleado(self):
+            nombre = self.alpha.txtNombre.get()
+            paterno = self.alpha.txtPaterno.get()
+            materno = self.alpha.txtMaterno.get()
+            curp = self.alpha.txtCURP.get()
+            rfc = self.alpha.txtRFC.get()
+            direccion = self.alpha.txtDireccion.get()
+            clave_worker = self.alpha.txtClaveWorker.get()
+            numero_seguro = self.alpha.txtNumeroSeguro.get()
+            area = self.alpha.txtArea.get()
+            empleado = {
+                "Nombre": nombre,
+                "Apellido Paterno": paterno,
+                "Apellido Materno": materno,
+                "CURP": curp,
+                "RFC": rfc,
+                "Direccion": direccion,
+                "Clave del Trabajador": clave_worker,
+                "Numero de Seguro": numero_seguro,
+                "Area de Trabajo": area,
+                "Ubicacion de Foto": f"{self.saved_image_path}"
+            }
+            self.empleados[rfc] = empleado
+            self.alpha.txtNombre.delete(0, tk.END)
+            self.alpha.txtPaterno.delete(0, tk.END)
+            self.alpha.txtMaterno.delete(0, tk.END)
+            self.alpha.txtCURP.delete(0, tk.END)
+            self.alpha.txtRFC.delete(0, tk.END)
+            self.alpha.txtDireccion.delete(0, tk.END)
+            self.alpha.txtClaveWorker.delete(0, tk.END)
+            self.alpha.txtNumeroSeguro.delete(0, tk.END)
+            self.alpha.txtArea.delete(0, tk.END)
+            self.limpiarPantalla()
+            self.imprimirEmpleados()
+
+    def imprimirEmpleados(self):
+        for rfc, empleado in self.empleados.items():
+            print(f"RFC: {rfc}")
+            print(f"CURP: {empleado['CURP']}")
+            print(f"Nombre: {empleado['Nombre']}")
+            print(f"Apellido Paterno: {empleado['Apellido Paterno']}")
+            print(f"Apellido Materno: {empleado['Apellido Materno']}")
+            print(f"Dirección: {empleado['Direccion']}")
+            print(f"Clave del Trabajador: {empleado['Clave del Trabajador']}")
+            print(f"Número de Seguro: {empleado['Numero de Seguro']}")
+            print(f"Área de Trabajo: {empleado['Area de Trabajo']}")
+            print(f"Ubicación de Foto: {empleado['Ubicacion de Foto']}")
+            print("\n")  # Agrega un salto de línea entre cada empleado
+
+    def verificarDatos(self):
+        nombre = self.alpha.txtNombre.get()
+        paterno = self.alpha.txtPaterno.get()
+        materno = self.alpha.txtMaterno.get()
+        rfc = self.alpha.txtRFC.get()
+        curp = self.alpha.txtCURP.get()
+        direccion = self.alpha.txtDireccion.get()
+        clave_worker = self.alpha.txtClaveWorker.get()
+        numero_seguro = self.alpha.txtNumeroSeguro.get()
+        area = self.alpha.txtArea.get()
+        datos_completos = not (not nombre or not paterno or not materno or not rfc or not direccion or not clave_worker or not numero_seguro or not area or not curp)
+        foto_tomada = bool(self.saved_image_path)
+        if datos_completos and foto_tomada:
+            self.alpha.btnGuardar["state"] = "normal"  # Habilitar el botón
         else:
-            self.cap.release()
+            self.alpha.btnGuardar["state"] = "disabled"  # Deshabilitar el botón
+        return datos_completos and foto_tomada
+
+    def limpiarPantalla(self):
+            for widget in self.alpha.derecho.winfo_children():
+                widget.destroy()
+
+    def eliminarEmpleado(self):
+        rfc_a_eliminar = self.alpha.txtBaja.get()
+        if rfc_a_eliminar in self.empleados:
+            del self.empleados[rfc_a_eliminar]
+            self.alpha.txtBaja.delete(0, tk.END)  # Limpiar el campo de texto txtBaja
+            self.imprimirEmpleados()  # Actualizar la lista de empleados en la consola
+            self.limpiarPantalla()
+            messagebox.showinfo("Éxito", "Usuario eliminado")
+        else:
+            self.limpiarPantalla()
+            messagebox.showerror("Error", "Esta clave no existe")
+
+    def validarRFC(self, event):
+        rfc = self.alpha.txtRFC.get()
+        if len(rfc) > 12:
+            rfc = rfc[:12]
+        rfc = rfc.upper()
+        self.alpha.txtRFC.delete(0, tk.END)
+        self.alpha.txtRFC.insert(0, rfc)
+
+    def validarCURP(self, event):
+        curp = self.alpha.txtCURP.get()
+        if len(curp) > 18:
+            curp = curp[:18]
+        curp = curp.upper()
+        self.alpha.txtCURP.delete(0, tk.END)
+        self.alpha.txtCURP.insert(0, curp)
+
+    def crearPDF(self):
+        rfc = self.alpha.txtPDF.get()
+        if rfc in self.empleados:
+            empleado = self.empleados[rfc]
+            pdf_filename = f"{rfc}.pdf"
+            directorio_actual = os.getcwd()
+            ruta_pdf = os.path.join(directorio_actual, pdf_filename)
+            foto_path = empleado["Ubicacion de Foto"]
+            if os.path.exists(foto_path):
+                img = PILImage.open(foto_path)
+                img = img.resize((300, 300))  
+                with tempfile.NamedTemporaryFile(delete=False, suffix=".jpg") as temp_img:
+                    img.save(temp_img.name, "JPEG")
+                doc = SimpleDocTemplate(ruta_pdf, pagesize=letter)
+                elementos = []
+                estilo_titulo = getSampleStyleSheet()["Title"]
+                estilo_titulo.alignment = 1  # 0=Left, 1=Center, 2=Right
+                estilo_titulo.textColor = colors.blue
+                elementos.append(Paragraph("INGENIERIA DE SOFTWARE 6S1", estilo_titulo))
+                elementos.append(Spacer(1, 12))  # Espacio en blanco
+                img_path = temp_img.name
+                img_with_border = PILImage.new('RGB', (320, 320), 'black')
+                img_with_border.paste(img, (10, 10))  # Ajusta el tamaño y la posición del marco
+                img_with_border.save(img_path)
+                elementos.append(ReportLabImage(img_path, width=300, height=300))
+                elementos.append(Spacer(1, 12))  # Espacio en blanco
+                estilo_nombre = getSampleStyleSheet()["Normal"]
+                estilo_nombre.alignment = 1
+                estilo_nombre.textColor = colors.black
+                elementos.append(Paragraph("Nombre", estilo_titulo))
+                nombre_completo = f"{empleado['Nombre']} {empleado['Apellido Paterno']} {empleado['Apellido Materno']}"
+                elementos.append(Paragraph(nombre_completo, estilo_nombre))
+                elementos.append(Spacer(1, 12))  # Espacio en blanco
+                elementos.append(Paragraph("Area de Trabajo", estilo_titulo))
+                elementos.append(Paragraph(empleado["Area de Trabajo"], estilo_nombre))
+                elementos.append(Spacer(1, 12))  # Espacio en blanco
+                elementos.append(Paragraph("RFC", estilo_titulo))
+                elementos.append(Paragraph(empleado["RFC"], estilo_nombre))
+                elementos.append(PageBreak())  # Separar en una nueva página
+                elementos.append(Paragraph("TECNM", estilo_titulo))
+                doc.build(elementos)
+                os.system(f"start {ruta_pdf}")
+                print(f"El PDF se ha guardado en: {ruta_pdf}")
+                self.limpiarPantalla()
+            else:
+                messagebox.showerror("Error", "La imagen no existe")
+        else:
+            messagebox.showerror("Error", "Esta clave no existe")
+            self.limpiarPantalla()

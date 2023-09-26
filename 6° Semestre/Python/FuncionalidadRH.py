@@ -1,16 +1,15 @@
 import os
-from tkinter import filedialog, IntVar, messagebox
 import tkinter as tk
-from PIL import Image as PILImage
-from PIL import ImageTk
+from tkinter import filedialog, IntVar, messagebox
 import cv2
 import threading
+from PIL import Image as PILImage
+from PIL import ImageTk
 from reportlab.lib.pagesizes import letter
-from reportlab.platypus import SimpleDocTemplate, Image as ReportLabImage, Spacer, Paragraph
+from reportlab.platypus import SimpleDocTemplate, Image as ReportLabImage, Spacer, Paragraph, PageBreak
 from reportlab.lib import colors
 from reportlab.lib.styles import getSampleStyleSheet
 import tempfile
-from reportlab.platypus import PageBreak
 
 class Funcionalidad:
     def __init__(self, interfaz):
@@ -26,6 +25,8 @@ class Funcionalidad:
         self.capture_active = False
         self.saved_image_path = None
         self.empleados = {}
+
+    # Activa o desactiva la cámara
     def activateImagen(self):
         self.camara_activa = not self.camara_activa
         if self.camara_activa:
@@ -44,6 +45,7 @@ class Funcionalidad:
             self.alpha.btnTomarFoto.config(state=tk.DISABLED)
             self.alpha.lblCamara.pack_forget()
 
+    # Inicia la captura de video desde la cámara
     def iniciarCamara(self):
         try:
             self.cap.open(self.url)
@@ -58,6 +60,7 @@ class Funcionalidad:
         except Exception as e:
             print("Error al iniciar la cámara:", str(e))
 
+    # Carga la imagen de la cámara en un widget
     def cargarCamaraEnFrame(self, frame):
         img = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
         img = cv2.resize(img, (200, 200))
@@ -66,6 +69,7 @@ class Funcionalidad:
         self.alpha.lblCamara.configure(image=tkimage)
         self.alpha.lblCamara.image = tkimage
 
+    # Establece una imagen capturada como fondo
     def setImagen(self):
         try:
             directorio = filedialog.asksaveasfilename(
@@ -93,6 +97,7 @@ class Funcionalidad:
         except Exception as e:
             print("Error al guardar la imagen:", str(e))
 
+    # Actualiza la imagen de la cámara de forma continua
     def callback(self):
         try:
             self.cap.open(self.url)
@@ -110,41 +115,43 @@ class Funcionalidad:
         except Exception as e:
             print("Error al actualizar la imagen de la cámara:", str(e))
 
+    # Guarda los datos del empleado en un diccionario
     def guardarEmpleado(self):
-            nombre = self.alpha.txtNombre.get()
-            paterno = self.alpha.txtPaterno.get()
-            materno = self.alpha.txtMaterno.get()
-            curp = self.alpha.txtCURP.get()
-            rfc = self.alpha.txtRFC.get()
-            direccion = self.alpha.txtDireccion.get()
-            clave_worker = self.alpha.txtClaveWorker.get()
-            numero_seguro = self.alpha.txtNumeroSeguro.get()
-            area = self.alpha.txtArea.get()
-            empleado = {
-                "Nombre": nombre,
-                "Apellido Paterno": paterno,
-                "Apellido Materno": materno,
-                "CURP": curp,
-                "RFC": rfc,
-                "Direccion": direccion,
-                "Clave del Trabajador": clave_worker,
-                "Numero de Seguro": numero_seguro,
-                "Area de Trabajo": area,
-                "Ubicacion de Foto": f"{self.saved_image_path}"
-            }
-            self.empleados[rfc] = empleado
-            self.alpha.txtNombre.delete(0, tk.END)
-            self.alpha.txtPaterno.delete(0, tk.END)
-            self.alpha.txtMaterno.delete(0, tk.END)
-            self.alpha.txtCURP.delete(0, tk.END)
-            self.alpha.txtRFC.delete(0, tk.END)
-            self.alpha.txtDireccion.delete(0, tk.END)
-            self.alpha.txtClaveWorker.delete(0, tk.END)
-            self.alpha.txtNumeroSeguro.delete(0, tk.END)
-            self.alpha.txtArea.delete(0, tk.END)
-            self.limpiarPantalla()
-            self.imprimirEmpleados()
+        nombre = self.alpha.txtNombre.get()
+        paterno = self.alpha.txtPaterno.get()
+        materno = self.alpha.txtMaterno.get()
+        curp = self.alpha.txtCURP.get()
+        rfc = self.alpha.txtRFC.get()
+        direccion = self.alpha.txtDireccion.get()
+        clave_worker = self.alpha.txtClaveWorker.get()
+        numero_seguro = self.alpha.txtNumeroSeguro.get()
+        area = self.alpha.txtArea.get()
+        empleado = {
+            "Nombre": nombre,
+            "Apellido Paterno": paterno,
+            "Apellido Materno": materno,
+            "CURP": curp,
+            "RFC": rfc,
+            "Direccion": direccion,
+            "Clave del Trabajador": clave_worker,
+            "Numero de Seguro": numero_seguro,
+            "Area de Trabajo": area,
+            "Ubicacion de Foto": f"{self.saved_image_path}"
+        }
+        self.empleados[rfc] = empleado
+        self.alpha.txtNombre.delete(0, tk.END)
+        self.alpha.txtPaterno.delete(0, tk.END)
+        self.alpha.txtMaterno.delete(0, tk.END)
+        self.alpha.txtCURP.delete(0, tk.END)
+        self.alpha.txtRFC.delete(0, tk.END)
+        self.alpha.txtDireccion.delete(0, tk.END)
+        self.alpha.txtClaveWorker.delete(0, tk.END)
+        self.alpha.txtNumeroSeguro.delete(0, tk.END)
+        self.alpha.txtArea.delete(0, tk.END)
+        self.limpiarPantalla()
+        self.imprimirEmpleados()
 
+    # Imprime los datos de los empleados en la consola
     def imprimirEmpleados(self):
         for rfc, empleado in self.empleados.items():
             print(f"RFC: {rfc}")
@@ -159,6 +166,7 @@ class Funcionalidad:
             print(f"Ubicación de Foto: {empleado['Ubicacion de Foto']}")
             print("\n")  # Agrega un salto de línea entre cada empleado
 
+    # Verifica si se han ingresado datos y se ha capturado una foto
     def verificarDatos(self):
         nombre = self.alpha.txtNombre.get()
         paterno = self.alpha.txtPaterno.get()
@@ -177,10 +185,12 @@ class Funcionalidad:
             self.alpha.btnGuardar["state"] = "disabled"  # Deshabilitar el botón
         return datos_completos and foto_tomada
 
+    # Limpia la pantalla principal
     def limpiarPantalla(self):
-            for widget in self.alpha.derecho.winfo_children():
-                widget.destroy()
+        for widget in self.alpha.derecho.winfo_children():
+            widget.destroy()
 
+    # Elimina un empleado del diccionario
     def eliminarEmpleado(self):
         rfc_a_eliminar = self.alpha.txtBaja.get()
         if rfc_a_eliminar in self.empleados:
@@ -193,6 +203,7 @@ class Funcionalidad:
             self.limpiarPantalla()
             messagebox.showerror("Error", "Esta clave no existe")
 
+    # Valida y formatea el RFC ingresado
     def validarRFC(self, event):
         rfc = self.alpha.txtRFC.get()
         if len(rfc) > 12:
@@ -201,6 +212,7 @@ class Funcionalidad:
         self.alpha.txtRFC.delete(0, tk.END)
         self.alpha.txtRFC.insert(0, rfc)
 
+    # Valida y formatea el CURP ingresado
     def validarCURP(self, event):
         curp = self.alpha.txtCURP.get()
         if len(curp) > 18:
@@ -209,6 +221,7 @@ class Funcionalidad:
         self.alpha.txtCURP.delete(0, tk.END)
         self.alpha.txtCURP.insert(0, curp)
 
+    # Crea un PDF con los datos de un empleado
     def crearPDF(self):
         rfc = self.alpha.txtPDF.get()
         if rfc in self.empleados:

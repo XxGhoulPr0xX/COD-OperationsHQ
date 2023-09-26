@@ -35,7 +35,8 @@ class Interfaz:
         self.btnAsignar = ttk.Button(self.izquierdo, text="Asignar Credenciales", command=self.Asignar)
         self.btnAsignar.pack(side="top", pady=5, fill=tk.X)
         self.alpha = Funcionalidad(self)  # Crea una instancia de Funcionalidad
-
+    
+    # Función para gestionar la asignación de credenciales
     def Asignar(self):
         self.alpha.limpiarPantalla()
         lblRFCPDF = tk.Label(self.derecho, text="Ingrese RFC del trabajador:")
@@ -44,14 +45,16 @@ class Interfaz:
         self.txtPDF.grid(row=0, column=1, padx=10, pady=10, sticky="n")
         self.btnPDF = ttk.Button(self.derecho, text="Buscar", command=self.alpha.crearPDF)
         self.btnPDF.grid(row=0, column=2, padx=10, pady=10, sticky="n")
-
+    
+    # Función para gestionar la edición de usuarios
     def Editar(self):
         self.alpha.limpiarPantalla()
         self.btnAlta = ttk.Button(self.derecho, text="Alta", command=self.Alta)
         self.btnAlta.grid(row=0, column=0, padx=10, pady=10)
         self.btnBaja = ttk.Button(self.derecho, text="Baja", command=self.Baja)
         self.btnBaja.grid(row=0, column=1, padx=10, pady=10)
-
+    
+    # Función para gestionar la alta de usuarios
     def Alta(self):
         self.btnAlta["state"] = "disabled"  # Habilitar el botón
         self.btnBaja["state"] = "disabled"  # Habilitar el botón
@@ -125,7 +128,7 @@ class Interfaz:
         self.btnGuardar.config(state=tk.DISABLED)
         self.lblCamara = Label(camera_frame)
         self.lblCamara.pack()
-
+    # Función para gestionar la baja de usuarios
     def Baja(self):
         self.btnAlta["state"] = "disabled"  # Habilitar el botón
         self.btnBaja["state"] = "disabled"  # Habilitar el botón
@@ -135,7 +138,7 @@ class Interfaz:
         self.txtBaja.grid(row=1, column=3, padx=10, pady=10, sticky="n")
         self.btnBaja = ttk.Button(self.derecho, text="Baja", command=self.alpha.eliminarEmpleado)
         self.btnBaja.grid(row=1, column=4, padx=10, pady=10, sticky="n")
-
+    # Función para iniciar la aplicación
     def run(self):
         self.ventana.mainloop()
 

@@ -14,7 +14,7 @@ import tempfile
 class Funcionalidad:
     def __init__(self, interfaz):
         self.alpha = interfaz
-        self.url = 0#'https://192.168.129.123:8080/shot.jpg'
+        self.url = 0#'https://192.168.43.1:8080/shot.jpg'
         self.cap = cv2.VideoCapture(self.url)
         self.numImage = IntVar()
         self.numImage.set(0)
@@ -25,6 +25,7 @@ class Funcionalidad:
         self.capture_active = False
         self.saved_image_path = None
         self.empleados = {}
+        self.contraseña = "1234"
 
     # Activa o desactiva la cámara
     def activateImagen(self):
@@ -271,3 +272,57 @@ class Funcionalidad:
         else:
             messagebox.showerror("Error", "Esta clave no existe")
             self.limpiarPantalla()
+
+    #Inicia sesion
+    def Login(self):
+        if self.alpha.txtUsuario.get() == "isoft" and self.alpha.txtContraseña.get() == self.contraseña:
+            for widget in self.alpha.derecho.winfo_children():
+                widget.destroy()
+            self.alpha.Tienda()
+        else:
+            self.lblQP = tk.Label(self.alpha.derecho, text="Usuario o Contraseña Incorrectos")
+            self.lblQP.grid(row=8, column=0, padx=200, pady=0, sticky="w")
+
+    #Cambia de contraseña
+    def ChangePassword(self):
+        self.ventana_cambio = tk.Toplevel()
+        self.ventana_cambio.title("Cambiar Contraseña")
+        lblContraseñaAnterior = tk.Label(self.ventana_cambio, text="Contraseña Anterior:")
+        lblContraseñaAnterior.grid(row=1, column=0, padx=200, pady=20, sticky="w")
+        self.txtContraseñaAnterior = tk.Entry(self.ventana_cambio, show="*")
+        self.txtContraseñaAnterior.grid(row=2, column=0, padx=200, pady=20, sticky="w")
+        lblNuevaContraseña = tk.Label(self.ventana_cambio, text="Nueva Contraseña:")
+        lblNuevaContraseña.grid(row=3, column=0, padx=200, pady=20, sticky="w")
+        self.txtNuevaContraseña = tk.Entry(self.ventana_cambio, show="*")
+        self.txtNuevaContraseña.grid(row=4, column=0, padx=200, pady=20, sticky="w")
+        self.btnGuardar = tk.Button(self.ventana_cambio, text="Guardar Cambio", command=self.UpdatePassword)
+        self.btnGuardar.grid(row=5, column=0, padx=200, pady=20, sticky="w")
+        btnMostrar = tk.Button(self.ventana_cambio, text="Mostrar Contraseña", command=self.ShowPassword1)
+        btnMostrar.grid(row=6, column=0, padx=200, pady=20, sticky="w")
+
+    #Actualiza la contraseña
+    def UpdatePassword(self):
+        if self.contraseña == self.txtContraseñaAnterior.get():
+            self.contraseña = self.txtNuevaContraseña.get()
+            self.ventana_cambio.destroy()
+        else:
+            self.lblQP = tk.Label(self.ventana_cambio, text="Contraseña Anterior Incorrecta")
+            self.lblQP.grid(row=5, column=0, padx=200, pady=20, sticky="w")
+
+    #Mostra la contraseña
+    def ShowPassword(self):
+        self.bandera = not self.bandera
+        if self.bandera:
+            self.alpha.txtContraseña.config(show="")
+        else:
+            self.alpha.txtContraseña.config(show="*")
+
+    #Muestra la segunda contraseña
+    def ShowPassword1(self):
+        self.botón_presionado = not self.botón_presionado
+        if self.botón_presionado:
+            self.txtContraseñaAnterior.config(show="")
+            self.txtNuevaContraseña.config(show="")
+        else:
+            self.txtContraseñaAnterior.config(show="*")
+            self.txtNuevaContraseña.config(show="*")

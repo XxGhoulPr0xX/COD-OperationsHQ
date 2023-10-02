@@ -35,6 +35,24 @@ class Interfaz:
         self.btnAsignar = ttk.Button(self.izquierdo, text="Asignar Credenciales", command=self.Asignar)
         self.btnAsignar.pack(side="top", pady=5, fill=tk.X)
         self.alpha = Funcionalidad(self)  # Crea una instancia de Funcionalidad
+        self.Login()
+    
+    #Funcion de inicio de sesion
+    def Login(self):
+        lblUsuario = tk.Label(self.derecho, text="Usuario")
+        lblUsuario.grid(row=0, column=0, padx=200, pady=15, sticky='w')
+        self.txtUsuario = tk.Entry(self.derecho)
+        self.txtUsuario.grid(row=1, column=0, padx=200, pady=15, sticky="w")
+        lblContraseña = tk.Label(self.derecho, text="Contraseña")
+        lblContraseña.grid(row=2, column=0, padx=200, pady=15, sticky="w")
+        self.txtContraseña = tk.Entry(self.derecho, show="*")
+        self.txtContraseña.grid(row=3, column=0, padx=200, pady=15, sticky="w")
+        self.btnIniciarSesion = tk.Button(self.derecho, text="Iniciar Sesión", command=self.alpha.Login)
+        self.btnIniciarSesion.grid(row=4, column=0, padx=200, pady=15, sticky="w")
+        self.btnCambiar = tk.Button(self.derecho, text="Cambiar Contraseña", command=self.alpha.ChangePassword)
+        self.btnCambiar.grid(row=5, column=0, padx=200, pady=15, sticky="w")
+        self.btnMostrar = tk.Button(self.derecho, text="Mostrar Contraseña", command=self.alpha.ShowPassword)
+        self.btnMostrar.grid(row=6, column=0, padx=200, pady=15, sticky="w")
     
     # Función para gestionar la asignación de credenciales
     def Asignar(self):

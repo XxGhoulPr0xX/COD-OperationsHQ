@@ -14,7 +14,7 @@ import tempfile
 class Funcionalidad:
     def __init__(self, interfaz):
         self.alpha = interfaz
-        self.url = 0#'https://192.168.43.1:8080/shot.jpg'
+        self.url = 'https://192.168.43.1:8080/shot.jpg'
         self.cap = cv2.VideoCapture(self.url)
         self.numImage = IntVar()
         self.numImage.set(0)
@@ -276,9 +276,10 @@ class Funcionalidad:
     #Inicia sesion
     def Login(self):
         if self.alpha.txtUsuario.get() == "isoft" and self.alpha.txtContraseña.get() == self.contraseña:
+            self.alpha.btnEditar["state"] = "normal"  # Habilitar el botón
+            self.alpha.btnAsignar["state"] = "normal"  # Habilitar el botón
             for widget in self.alpha.derecho.winfo_children():
                 widget.destroy()
-            self.alpha.Tienda()
         else:
             self.lblQP = tk.Label(self.alpha.derecho, text="Usuario o Contraseña Incorrectos")
             self.lblQP.grid(row=8, column=0, padx=200, pady=0, sticky="w")

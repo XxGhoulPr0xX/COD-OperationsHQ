@@ -28,12 +28,12 @@ class Interfaz:
         self.izquierdo = tk.Frame(self.ventana, bd=2, relief=tk.RAISED)
         self.izquierdo.grid(row=0, column=0, rowspan=6, padx=10, pady=10, sticky="nsw")
         self.izquierdo.configure(bg="blue")
-
-
         self.btnEditar = ttk.Button(self.izquierdo, text="Editar Usuario", command=self.Editar)
         self.btnEditar.pack(side="top", pady=5, fill=tk.X)
         self.btnAsignar = ttk.Button(self.izquierdo, text="Asignar Credenciales", command=self.Asignar)
         self.btnAsignar.pack(side="top", pady=5, fill=tk.X)
+        self.btnEditar["state"] = "disabled"  # Habilitar el botón
+        self.btnAsignar["state"] = "disabled"  # Habilitar el botón
         self.alpha = Funcionalidad(self)  # Crea una instancia de Funcionalidad
         self.Login()
     
@@ -88,7 +88,7 @@ class Interfaz:
         self.txtPaterno.grid(row=1, column=1, padx=10, pady=5, sticky="w")
 
         lblPaterno = tk.Label(self.input_frame, text="Paterno")
-        lblPaterno.grid(row=2, column=0, padx=10, pady=5, sticky="w")
+        lblPaterno.grid(row=2, column=1, padx=10, pady=5, sticky="w")
 
         self.txtMaterno = tk.Entry(self.input_frame)
         self.txtMaterno.grid(row=1, column=2, padx=10, pady=5, sticky="w")

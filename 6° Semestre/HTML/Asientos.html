@@ -1,0 +1,24 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estadio</title>
+    <link rel="stylesheet" type="text/css" href="MView/Asientos.css">
+</head>
+<body>
+    <div id="frame1">
+        <h1>Asientos</h1>
+        <button onclick="createCircles()">Nuevo</button>
+        <div class="circle-container" id="circleContainer"></div>
+    </div>
+    <script src="Control/Estadio.js"></script>
+    <script>
+        const alpha = new Estadio();
+        function createCircles() {
+            alpha.createCircles();
+        }
+    </script>
+</body>
+</html>

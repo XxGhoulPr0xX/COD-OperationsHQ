@@ -5,10 +5,10 @@ import java.awt.event.ActionListener;
 
 public class InterfazGrafica extends JFrame {
 
-    private JTextField codigoTextField;
-    private JTextField montoRecargaTextField;
-    private JButton recargarButton;
-    private JTextArea resultadoTextArea;
+    private JTextField txtCodigo;
+    private JTextField txtRecarga;
+    private JButton btnRecargar;
+    private JTextArea txtResultado;
     //Crea la interfaz
     public InterfazGrafica() {
         setTitle("Recarga de Tarjeta");
@@ -20,31 +20,36 @@ public class InterfazGrafica extends JFrame {
         panelEntrada.setLayout(new GridLayout(3, 2));
 
         JLabel lblCodigo = new JLabel("Código de Tarjeta:");
-        codigoTextField = new JTextField();
-        JLabel montoLabel = new JLabel("Monto a Recargar:");
-        montoRecargaTextField = new JTextField();
-        recargarButton = new JButton("Recargar");
+        txtCodigo = new JTextField();
+        JLabel lblMonto = new JLabel("Monto a Recargar:");
+        txtRecarga = new JTextField();
+        btnRecargar = new JButton("Recargar");
 
         panelEntrada.add(lblCodigo);
-        panelEntrada.add(codigoTextField);
-        panelEntrada.add(montoLabel);
-        panelEntrada.add(montoRecargaTextField);
+        panelEntrada.add(txtCodigo);
+        panelEntrada.add(lblMonto);
+        panelEntrada.add(txtRecarga);
         panelEntrada.add(new JLabel()); // Espacio en blanco
-        panelEntrada.add(recargarButton);
+        panelEntrada.add(btnRecargar);
 
-        resultadoTextArea = new JTextArea();
-        resultadoTextArea.setEditable(false);
+        txtResultado = new JTextArea();
+        txtResultado.setEditable(false);
 
         add(panelEntrada, BorderLayout.NORTH);
-        add(resultadoTextArea, BorderLayout.CENTER);
+        add(txtResultado, BorderLayout.CENTER);
 
-        recargarButton.addActionListener(new ActionListener() {
+        btnRecargar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String codigo = codigoTextField.getText();
-                int montoRecarga = Integer.parseInt(montoRecargaTextField.getText());
-                String nuevoCodigo = Funcionalidad.recargarSaldo(codigo, montoRecarga);
-                resultadoTextArea.setText(nuevoCodigo);
+                String codigo = txtCodigo.getText();
+                String recargaText = txtRecarga.getText();
+                if (codigo.isEmpty() || recargaText.isEmpty()) {
+                    txtResultado.setText("Falta ingresar el código o el monto de recarga.");
+                } else {
+                    int montoRecarga = Integer.parseInt(recargaText);
+                    String nuevoCodigo = Funcionalidad.recargarSaldo(codigo, montoRecarga);
+                    txtResultado.setText(nuevoCodigo);
+                }
             }
         });
     }

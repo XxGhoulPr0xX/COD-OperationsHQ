@@ -1,0 +1,197 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    background-color: rgb(255, 255, 255); /* Fondo oscuro */
+}
+
+/* Estilos para los círculos y el cuadrado */
+.circle-container {
+    display: flex;
+    flex-direction: column; /* Cambiar la dirección a "column" para dibujar hacia abajo */
+}
+.circle-row {
+    display: flex; /* Crear una fila de círculos */
+}
+.Ventanas {
+    color: white; /* Texto en color claro */
+    display: flex;
+    padding: 10px;
+    font-weight: bold; /* Texto en negrita */
+    align-items: center;
+    font-family: 'Arial', sans-serif;
+    text-decoration: none; /* Quitar la subraya predeterminada de los enlaces */
+    border-radius: 5px; /* Bordes redondeados */
+    margin: 5px; /* Margen entre los enlaces */
+    transition: background-color 0.3s; /* Transición de color de fondo al pasar el mouse */
+}
+
+.Ventanas:hover {
+    background-color: #b65b00; /* Marrón claro al pasar el mouse */
+}
+
+.Ventanas:active {
+    background-color: #005600; /* Marrón más oscuro al hacer clic en el enlace */
+}
+
+.circle {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin: 10px; /* Espacio entre los círculos y el cuadrado */
+}
+.letter {
+    margin-right: 10px; /* Espacio entre el círculo y la letra */
+}
+.yellow {
+    background-color: #FFA500; /* Naranja */
+}
+.orange {
+    background-color: #993399; /* Púrpura */
+}
+.blue {
+    background-color: #32CD32; /* Verde */
+}
+.gray {
+    background-color: #663300; /* Marrón oscuro */
+}
+.square-with-border {
+    border: 2px solid transparent; /* Asegúrate de que el borde sea transparente */
+    width: 10px;
+    height: 10px;
+    margin: 10px; /* Espacio entre los círculos y el cuadrado */
+    background-color: transparent;
+}
+/* Estilos para el primer div (negro) */
+.Fondo {
+    border: none;
+    background-color: #663300; /* Marrón claro */
+    width: 20%;
+    height: 110vh;
+    float: left;
+    color: white; /* Texto en color claro */
+    font-family: 'Arial', sans-serif;
+    align-items: center;
+    text-align: justify;
+}
+/* Estilos para el cuadro de texto */
+.rounded-input {
+    width: 25em;
+    height: 2em;
+    margin-bottom: 10px; /* Espacio entre enlaces */
+    border-radius: 1em; /* Hacer el cuadro de texto redondeado */
+    padding-left: 1em; /* Espacio a la izquierda del texto dentro del cuadro */
+}
+/* Estilos para el segundo div (grande) */
+.contenedorAsientos {
+    padding-top: 10px;
+    padding-left: 10px;
+    display: flex;
+    flex-direction: column; /* Cambiar la dirección a "column" para dibujar hacia abajo */
+    justify-content: left;
+}
+.contenedorVentas {
+    padding-top: 10px;
+    padding-left: 10px;
+    display: flex;
+    flex-direction: column; /* Cambiar la dirección a "column" para dibujar hacia abajo */
+    justify-content: left;
+}
+.contenedorReportes {
+    padding-top: 10px;
+    padding-left: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+/* Estilo para el frame izquierdo */
+.ReportesDerecho {
+    flex: 1;
+    background-color: #FFA500; /* Naranja */
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 5px;
+}
+
+/* Estilo para el frame derecho */
+.ReportesIzquierdo {
+    flex: 1;
+    background-color: #993399; /* Púrpura */
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 5px;
+}
+/* Estilo para las etiquetas de texto */
+.Label {
+    font-size: 16px;
+    color: #000000; /* Color de texto claro */
+    margin-bottom: 5px; /* Margen inferior */
+}
+
+/* Estilo para las cajas de texto */
+.CajaDeTexto {
+    width: 50%;
+    padding: 8px;
+    border: 1px solid #ccc; /* Borde ligero */
+    border-radius: 5px; /* Bordes redondeados */
+    font-size: 16px;
+    margin-bottom: 10px; /* Margen inferior */
+}
+
+/* Estilo para el contenedor de archivos */
+.archivos {
+    width: 50%;
+    border: 2px solid #000; /* Borde negro sólido */
+    padding: 10px;
+    display: inline-block;
+    background-color: #f7f7f7; /* Fondo gris claro */
+    max-width: 300px; /* Ancho máximo */
+    margin-top: 10px; /* Margen superior */
+    border-radius: 5px; /* Bordes redondeados */
+    box-shadow: 3px 3px 5px #888888; /* Sombra suave */
+}
+
+/* Estilo para el contenedor principal */
+.contenedorConfigurar {
+    padding-top: 10px;
+    padding-left: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Alineación a la izquierda */
+    padding: 10px; /* Espaciado interior */
+}
+
+/* Estilo para el botón "Cargar reportes" */
+.boton {
+    height: 36px; /* Alto del botón */
+    width: 150px; /* Ancho del botón */
+    background-color: #32CD32; /* Verde */
+    color: white; /* Texto en color claro */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer; /* Cambiar el cursor al pasar el mouse */
+    margin-bottom: 10px; /* Margen inferior */
+    font-size: 16px; /* Tamaño de fuente */
+    transition: background-color 0.3s; /* Transición de color de fondo al pasar el mouse */
+}
+
+.boton:hover {
+    background-color: #005600; /* Verde más oscuro al pasar el mouse */
+}
+
+/* Estilos para los números */
+.numeros {
+    color: rgb(0, 0, 0); /* Texto en color claro */
+    font-size: 12px; /* Tamaño de fuente */
+    font-weight: bold; /* Texto en negrita */
+    transition: background-color 0.3s; /* Transición de color de fondo al pasar el mouse */
+    text-align: left; /* Alineación del texto al centro */
+    width: 10px; /* Ancho del elemento */
+    height: 10px; /* Alto del elemento */
+}
+
+.numeros:hover {
+    background-color: #663300; /* Marrón claro al pasar el mouse */
+    color: #ffffff; /* Color de texto claro al pasar el mouse */
+}

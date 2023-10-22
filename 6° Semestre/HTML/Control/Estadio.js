@@ -17,7 +17,6 @@ class Estadio{
         container.innerHTML = '';
         this.CrearBotones(container);
         this.Circulos(container);
-        //this.cargarAsientosComprados(); // Cargar asientos comprados al crear círculos
     }
     Circulos(container) {
         var estadioCreado = false;
@@ -91,7 +90,6 @@ class Estadio{
         btnComprar.innerText = "Comprar";
         btnComprar.className = "boton";
         btnComprar.onclick = this.ComprarAsientos.bind(this);
-        btnComprar.disabled = true;
         container.appendChild(btnComprar);
     }
     CrearBotones(container)
@@ -104,10 +102,12 @@ class Estadio{
 
             var txtCantidad = document.createElement("input");
             txtCantidad.type = "text";
-            txtCantidad.className = "CajaDeTexto";
+            txtCantidad.className = "txtCantidad";
             txtCantidad.min = 0; // Establecer el mínimo como 1
             txtCantidad.max = 5; // Establecer el máximo como 5
             txtCantidad.addEventListener('input', function() {
+                // Utilizar una expresión regular para eliminar caracteres no numéricos
+                this.value = this.value.replace(/[^0-9]/g, '');
                 // Verificar si el valor está dentro del rango permitido
                 if (this.value < 0) {
                     this.value = 1; // Establecer el valor mínimo si es menor que 1
@@ -124,7 +124,7 @@ class Estadio{
             container.appendChild(lblCategoria);
 
             var lbCategoria = document.createElement("select");
-            lbCategoria.className = "CajaDeTexto";
+            lbCategoria.className = "category-select";
 
            // Opciones de categoría
             var categories = ["Azul 150", "Naranja 100", "Amarrillo 70"];
@@ -143,12 +143,8 @@ class Estadio{
 
             var txtLugares = document.createElement("input");
             txtLugares.type = "text";
-            txtLugares.className = "CajaDeTexto";
+            txtLugares.className = "txtLugar";
             container.appendChild(txtLugares);
-
-            txtCantidad.oninput = this.Checar.bind(this);
-            lbCategoria.oninput = this.Checar.bind(this);
-            txtLugares.oninput = this.Checar.bind(this);
     }
 
     ComprarAsientos() {
@@ -223,18 +219,6 @@ class Estadio{
             }
         } else {
             window.confirm('Por favor, complete todos los campos requeridos.');
-        }
-    }
-    
-    Checar() {
-        var txtCantidad =document.querySelector('.txtCantidad');
-        var lbCategoria = document.querySelector('.category-select');
-        var txtLugares = document.querySelector('.txtLugar');
-        var btnComprar = document.querySelector('.comprar-button');
-        if (txtCantidad.value && lbCategoria.value && txtLugares.value) {
-            btnComprar.disabled = false;
-        } else {
-            btnComprar.disabled = true;
         }
     }
     actualizarTotal() {

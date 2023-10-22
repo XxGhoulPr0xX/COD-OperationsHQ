@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="Control/Estadio.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estadio</title>
+    <link rel="stylesheet" type="text/css" href="View/Tema1.css">
+</head>
+<body>
+    <div class="Fondo">
+        <h1>Estadio</h1>
+        <div class="search-container">
+            <input type="text" class="rounded-input" placeholder="Escribe aquí...">
+        </div>
+        <a class="Ventanas" href="javascript:void(0);" onclick="cambiarVista('asientos', 'Asientos.html')">Asientos</a>
+        <a class="Ventanas" href="javascript:void(0);" onclick="cambiarVista('ventas', 'Ventas.html')">Ventas</a>
+        <a class="Ventanas" href="javascript:void(0);" onclick="cambiarVista('reportes', 'Reportes.html')">Reportes</a>
+        <a class="Ventanas" href="javascript:void(0);" onclick="cambiarVista('configurar', 'Configurar.html')">Configurar</a>
+    </div>
+
+    <div id="asientosContent" style="display: none;">
+        <div class="contenedorAsientos">
+            <button class="boton" onclick="createCircles()">Nuevo</button>
+            <div class="circle-container" id="circleContainer"></div>
+        </div>
+    </div>
+
+    <div id="ventasContent" style="display: none">
+        <div class="contenedorVentas">
+            <label class="Label" for="total">Venta total:</label>
+            <input class="CajaDeTexto" type="text" id="total" name="total" readonly>
+            <button class="boton" onclick="actualizarTotal()">Cargar Total</button>
+            <div class="contenedor">
+                <button class="boton" onclick="cargarArchivos()">Cargar reportes</button>
+                <div class="archivos">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="reportesContent" style="display: none;">
+        <div class="contenedorReportes">
+            <button class="boton" onclick="cargarArchivosDerecho()">Cargar Reportes</button>
+            <div class="ReportesDerecho">
+            </div>
+            <div class="ReportesIzquierdo">
+            </div>
+        </div>    
+    </div>
+
+    <div id="configurarContent" style="display: none;">
+        <div class="contenedorConfigurar">
+            <button class="boton" onclick="cambiarTema('tema1')">Tema 1</button>
+            <button class="boton" onclick="cambiarTema('tema2')">Tema 2</button>
+            <button class="boton" onclick="cambiarTema('tema3')">Tema 3</button>
+        </div>
+    </div>
+
+    <script>
+        const alpha = new Estadio();
+        function cambiarVista(vista, url) {
+            document.getElementById('asientosContent').style.display = 'none';
+            document.getElementById('ventasContent').style.display = 'none';
+            document.getElementById('reportesContent').style.display = 'none';
+            document.getElementById('configurarContent').style.display = 'none';
+
+            document.getElementById(vista + 'Content').style.display = 'block';
+        }
+        function createCircles() {
+            alpha.createCircles();
+        }
+        function cargarArchivosDerecho(){
+            alpha.cargarArchivosDerecho();
+        }
+        function actualizarTotal() {
+            alpha.actualizarTotal();
+        }
+        function cargarArchivos(){
+            alpha.cargarArchivos();
+        }
+        function cambiarTema(tema){
+            alpha.cambiarTema(tema);
+        }
+    </script>
+</body>
+</html>

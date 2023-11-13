@@ -37,10 +37,10 @@ class TiendaInterfaz:
         lblPreparaPedido.grid(row=1, column=0, padx=10, pady=10, sticky="w")
         self.lblProductos = tk.Label(self.derecho, text="Productos")
         self.lblProductos.grid(row=2, column=0, padx=10, pady=10, sticky="w")
-        self.ddMenu = ttk.Combobox(self.derecho,
-                                   values=[
-                                       "Galletas", "Panques", "Paletas", "Donas", "Vizcocho"
-                                   ])
+        self.ddMenu = ttk.Combobox(self.derecho,values=
+            [
+            "Galletas", "Panques", "Paletas", "Donas", "Vizcocho"
+            ])
         self.ddMenu.grid(row=3, column=0, padx=10, pady=5, sticky="ew")
         self.ddMenu["state"] = "readonly"
         lblPrecio = tk.Label(self.derecho, text="Precio")

@@ -45,7 +45,7 @@ class Interfaz:
             lblStock = tk.Label(self.abastecer_frame, text=str(cantidad))
             lblStock.grid(row=self.row, column=1, padx=0, pady=0, sticky='w')
             btnAbastecer = tk.Button(self.abastecer_frame, text="Abastecer",
-                                     command=lambda p=producto: self.alpha.OpenInventory(p))
+                            command=lambda p=producto: self.alpha.OpenInventory(p))
             btnAbastecer.grid(row=self.row, column=2)
             self.row += 1
         self.nbAbastecerActual = self.abastecer_frame

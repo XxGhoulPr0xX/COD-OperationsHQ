@@ -25,7 +25,6 @@ public class Practica7 extends JFrame {
                 g.fillArc(60, 60, 50, 50, -210, 60);
                 g.fillArc(60, 110, 50, 50, 0, 360);
                 g.setColor(Color.BLACK);
-                g.fillOval(10, 10, 10, 10);
                 g.fillOval(10, 70, 10, 10);
                 g.fillOval(5, 120, 10, 10);
                 g.fillOval(70, 30, 10, 10);

@@ -66,8 +66,12 @@ class TiendaInterfaz:
         self.txtCiudad.bind("<KeyRelease>", lambda event: self.alpha.Checar())
         lblEstado = tk.Label(self.tlRegistro, text="Estado")
         lblEstado.grid(row=6,column=0,sticky="w")
-        self.txtEstado=tk.Entry(self.tlRegistro)
-        self.txtEstado.grid(row=6,column=1,sticky="w")
+        estados_mexico = ['Aguascalientes', 'Baja California','Baja California Sur','Campeche','Chiapas','Chihuahua','Ciudad De México','Coahuila','Colima',
+            'Durango','Guanajuato','Guerrero','Hidalgo','Jalisco','México','Michoacán','Morelos','Nayarit','Nuevo León','Oaxaca','Puebla',
+            'Querétaro','Quintana Roo','San Luis Potosí','Sinaloa','Sonora','Tabasco','Tamaulipas','Tlaxcala','Veracruz','Yucatán','Zacatecas']
+        self.txtEstado = ttk.Combobox(self.tlRegistro, values=estados_mexico)
+        self.txtEstado.grid(row=6, column=1, sticky="w")
+        self.txtEstado["state"] = "readonly"
         self.txtEstado.bind("<KeyRelease>", lambda event: self.alpha.Checar())
         lblCP = tk.Label(self.tlRegistro, text="Codigo Postal")
         lblCP.grid(row=7,column=0,sticky="w")
@@ -104,16 +108,19 @@ class TiendaInterfaz:
         self.ddMenu = ttk.Combobox(self.frTienda, values=nombres_productos)
         self.ddMenu.grid(row=3, column=0, padx=10, pady=5, sticky="ew")
         self.ddMenu["state"] = "readonly"
-        lblPrecio = tk.Label(self.frTienda, text="Precio")
-        lblPrecio.grid(row=2, column=1, padx=10, pady=10, sticky="w")
+        btnLimpiar=tk.Button(self.frTienda, text="Limpiar", command=self.alpha.LimpiarCarrito)
+        btnLimpiar.grid(row=3, column=3, padx=10, pady=5)
         self.lblTotal = tk.Label(self.frTienda, text="Total")
         self.lblTotal.grid(row=7, column=1, padx=10, pady=10, sticky="w")
         self.btnAgregar = tk.Button(self.frTienda, text="Agregar", command=self.alpha.UpdateCarrito)
         self.btnAgregar.grid(row=8, column=1, padx=10, pady=10, sticky="w")
         self.btnFinalizar = tk.Button(self.frTienda, text="Finalizar",command=self.alpha.Facturar)
         self.btnFinalizar.grid(row=8, column=2, padx=10, pady=10, sticky="w")
+        self.btnFinalizar["state"]="disabled"
         self.lbCarrito = tk.Listbox(self.frTienda, height=10)
         self.lbCarrito.grid(row=4, column=1, padx=10, pady=10, sticky="w")
+        btnCerrarSesion = tk.Button(self.frTienda, text="Cerrar Sesión", command=self.alpha.CerrarSesion)
+        btnCerrarSesion.grid(row=5, column=0, padx=10, pady=10, sticky="e")
 
     def surtirPedido(self):
         self.frSurtir = ttk.Frame(self.alpha.nbNavegador)
@@ -124,12 +131,16 @@ class TiendaInterfaz:
         self.ddPedidos = ttk.Combobox(self.frSurtir, values=nombres_pedido)
         self.ddPedidos.grid(row=0, column=1, padx=10, pady=5, sticky="w")
         self.ddPedidos["state"] = "readonly"
+        self.btnMostrarDireccion=tk.Button(self.frSurtir, text="Buscar Direccion Pedido" ,command=self.alpha.DireccionActual)
+        self.btnMostrarDireccion.grid(row=0,column=2, padx=10,pady=5,sticky="w")
         lblDireccionUsuario = tk.Label(self.frSurtir, text="Dirección de entrega:")
         lblDireccionUsuario.grid(row=2, column=0, padx=10, pady=5, sticky="w")
         self.lblDireccionPedido = tk.Label(self.frSurtir, text="")
         self.lblDireccionPedido.grid(row=2, column=1, padx=10, pady=5, sticky="w")
         btnPedido = tk.Button(self.frSurtir, text="Surtir Pedido", command=self.alpha.PedidoDB)
         btnPedido.grid(row=9, column=1, padx=10, pady=5, sticky="ew")
+        btnCerrarSesion = tk.Button(self.frSurtir, text="Cerrar Sesión", command=self.alpha.CerrarSesion)
+        btnCerrarSesion.grid(row=10, column=0, padx=10, pady=10, sticky="e")
         tiendas = self.alpha.getTiendasDesdeBD()
         self.radio_var = tk.StringVar(value=tiendas[0])  # Valor predeterminado
         row = 4
@@ -144,18 +155,21 @@ class TiendaInterfaz:
     def abastecerStock(self):
         self.frAbastecer = ttk.Frame(self.alpha.nbNavegador)
         self.alpha.nbNavegador.add(self.frAbastecer, text="Abastecer Stock")
-        lblProducto = tk.Label(self.frAbastecer, text="Producto:")
+        lblProducto = tk.Label(self.frAbastecer, text="Id Producto:")
         lblProducto.grid(row=0, column=0, padx=10, pady=5, sticky="ew")
         self.txtProductoAbastecer = tk.Entry(self.frAbastecer)
         self.txtProductoAbastecer.grid(row=0, column=1, padx=10, pady=5, sticky="ew")
-
+        self.txtProductoAbastecer.bind("<KeyRelease>", lambda event: self.alpha.ActualizarProducto())
         lblCantidad = tk.Label(self.frAbastecer, text="Cantidad:")
         lblCantidad.grid(row=1, column=0, padx=10, pady=5, sticky="ew")
         self.txtCantidadAbastecer = tk.Entry(self.frAbastecer)
         self.txtCantidadAbastecer.grid(row=1, column=1, padx=10, pady=5, sticky="ew")
-
-        btnAbastecer = tk.Button(self.frAbastecer, text="Abastecer Stock")
+        btnAbastecer = tk.Button(self.frAbastecer, text="Abastecer Stock", command=self.alpha.updateStock)
         btnAbastecer.grid(row=2, column=1, padx=10, pady=5, sticky="ew")
+        self.lblProductoA= tk.Label(self.frAbastecer, text="")
+        self.lblProductoA.grid(row=0, column=2, padx=10, pady=5,sticky="ew")
+        btnCerrarSesion = tk.Button(self.frAbastecer, text="Cerrar Sesión", command=self.alpha.CerrarSesion)
+        btnCerrarSesion.grid(row=3, column=0, padx=10, pady=10, sticky="e")
 
     def Facturar(self):
         factura_window = tk.Toplevel(self.ventana)

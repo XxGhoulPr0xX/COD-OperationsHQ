@@ -1,0 +1,131 @@
+body{
+    background-color: #000;
+}
+.Main {
+    max-width: 800px;
+    min-height: 300px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+h1, h2 {
+    color: #333;
+    margin-top: 0;
+}
+
+p, ul, li {
+    color: #666;
+}
+
+footer {
+    text-align: center;
+    margin-top: 30px;
+    color: #999;
+}
+
+a {
+    display: inline-block;
+    margin-top: 20px;
+    color: #007bff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+.periodic-table {
+    display: grid;
+    grid-template-columns: repeat(19, 1fr);
+    gap: 1px;
+    margin-top: 20px;
+}
+
+.numeros {
+    border: none;
+    background-color: none;
+    padding: 10px;
+    text-align: center;
+    color: #666;
+}
+
+.element {
+    border: 1px solid #000;
+    padding: 10px;
+    text-align: center;
+    color: #fff;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+.elementAlkaliMetal {
+    background-color: #f4c542; /* Naranja */
+}
+
+.elementAlkalineEarthMetal {
+    background-color: #ff8e6e; /* Rosado */
+}
+
+.elementLanthanide {
+    background-color: #ff6f61; /* Rojo */
+}
+
+.elementActinide {
+    background-color: #e9c46a; /* Amarillo */
+}
+
+.elementTransition {
+    background-color: #80cbc4; /* Verde agua */
+}
+
+.elementOther {
+    background-color: #f15bb5; /* Rosa */
+}
+
+.elementHalogens {
+    background-color: #69779b; /* Gris azulado */
+}
+
+.elementNobleGases {
+    background-color: #aad8d3; /* Azul claro */
+}
+
+.elementMetalloids {
+    background-color: #86c1b9; /* Verde azulado */
+}
+
+.NoMetal {
+    background-color: #7798ab; /* Azul grisáceo */
+}
+
+.MetalBloqueP {
+    background-color: #ff5733; /* Naranja rojizo */
+}
+.rain-drop{
+    color: #007bff;
+}

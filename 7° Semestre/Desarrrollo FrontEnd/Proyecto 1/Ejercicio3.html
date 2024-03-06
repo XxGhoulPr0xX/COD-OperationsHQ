@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function miFuncionFeliz(){
+            var objeto= document.getElementById("nombre");
+            objeto.value=objeto.value.toUpperCase();
+        }
+        function funcionSelect(){
+            alert("Seleccionaste el texto");
+        }
+        function funcionClick(){
+            document.getElementById("btn01").disabled=true;
+        }
+        function funcionFocus(objeto){
+            objeto.style.background="red"
+        }
+    </script>
+    <section>
+        escribe tu nombre <input type="text" id="nombre" onblur="miFuncionFeliz()">
+    </section>
+    <section>
+        Selecciona el texto <input type="text" id="seleccion" value="texxto de ejemplo" onselect="funcionSelect()">
+        <br>
+        <input type="button" id="btn01" value="ok" onclick="funcionClick()">
+        <br>
+        <input type="text" id="algo" onfocus="funcionFocus(this)">
+    </section>
+</body>
+</html>

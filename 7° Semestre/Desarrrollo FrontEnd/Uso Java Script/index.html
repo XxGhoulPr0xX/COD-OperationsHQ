@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Página Web</title>
+    <link rel="stylesheet" href="estilo.css">
+
+    <style>
+        p:hover {
+            background-color: lightblue;
+        }
+    </style>
+
+    <script>
+        function funcionxd() {
+            var objeto = document.getElementById("nombre");
+            objeto.value = objeto.value.toUpperCase();
+        }
+    </script>
+    <script>
+        function funcionfocus(objeto) {
+            objeto.style.background = "orange"
+        }
+    </script>
+    <script>
+        function funcionfocus(objeto) {
+            objeto.style.background = "yellow"
+        }
+    </script>
+    <script>
+        function funcionfocus1(objeto) {
+            objeto.style.background = "orange"
+        }
+    </script>
+</head>
+
+<body>
+    <header>
+        <h1>Bienvenido profesor</h1>
+    </header>
+    <main>
+        <p>Esta es mi primera página web con JavaScript.</p>
+        <button id="boton1">mostrar mensaje </button>
+        <p onmouseover="this.style.backgroundColor='lightgreen'" onmouseout="this.style.backgroundColor=''"></p><br>
+        <p id="demo"></p>
+        <br>
+
+        <center><button id="boton2"> nombre </button></center>
+        <p onmouseover="this.style.backgroundColor='lightgreen'" onmouseout="this.style.backgroundColor=''"></p><br>
+        <p id="demo2"></p>
+
+        <label for="num1">Número 1:</label>
+        <input type="text" id="num1" onfocus="funcionfocus(this)"><br><br>
+        <label for="num2">Número 2:</label>
+        <input type="text" id="num2" onfocus="funcionfocus1(this)"><br><br>
+        <button onclick="sumar()">Sumar</button>
+        <p onmouseover="this.style.backgroundColor='lightgreen'" onmouseout="this.style.backgroundColor=''"></p><br><br>
+        <p id="resultado"></p>
+    </main>
+    <script src="proyecto1.js"></script>
+</body>
+
+</html>

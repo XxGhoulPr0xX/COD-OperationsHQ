@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="assets/css/main.css">
+</head>
+
+<body>
+    <div class="Main">
+        <a href="Temario.html">Regresar al temario</a>
+        <header>
+            <h1>
+                Elementos básicos: texto, vínculos, listas,
+                tablas, objetos, imágenes y aplicaciones.
+            </h1>
+        </header>
+        <p>
+            El texto básico de un documento HTML puede escribirse sin etiquetas. Cada navegador lo visualiza entonces
+            con el tipo y tamaño de caracteres escogidos en su configuración por defecto, e introduce un salto de línea
+            cuando los caracteres alcanzan el borde de la ventana.
+            <br>
+            Las etiquetas propias para colocar títulos son:
+        <ul>
+            <li>&lt;h1&gt;Titulos&lt;/h1&gt;</li>
+            <li>&lt;h2&gt;subtitulos&lt;/h2&gt;</li>
+            <li>&lt;h3&gt;subtitulos&lt;/h2&gt;</li>
+            <li>&lt;h4&gt;subtitulos&lt;/h2&gt;</li>
+            <li>&lt;h5&gt;subtitulos&lt;/h2&gt;</li>
+            <li>&lt;h6&gt;subtitulos&lt;/h2&gt;</li>
+        </ul>
+        </p>
+        <p>
+            Hay una etiqueta que se conoce como &lt;p&gt; que sirve para agregar párrafos dentro del documento además se
+            le puede agregar parámetros como "ALIGN" que puede quedar como left, right, center o justify.
+            <br>
+            <br>
+            La etiqueta básica, que controla el tipo de fuente utilizado, es &lt;FONT&gt;
+            es una etiqueta pareada. Por tanto, afecta a los caracteres introducidos entre &lt;FONT&gt; y &lt;/FONT&gt;.
+            Pero sin más especificaciones, la etiqueta aún no sirve para nada.
+            <br>
+            <br>
+            Se puede especificar el tipo de letra (es decir, la fuente de caracteres) añadiéndolo a la etiqueta,
+            de la siguiente manera (en este caso, la fuente escogida es Arial): &lt;FONT FACE=”Arial”&gt;…&lt;/FONT&gt;.
+            Se puede especificar el color de la fuente con la etiqueta &lt;FONT COLOR=”?”&gt;…&lt;/FONT&gt;. Para
+            especificar los colores, conviene saber al menos lo siguiente:
+            Cada color posee su correspondiente código.
+        <h3>Colores</h3>
+        Hay dos códigos: hexadecimal –lo más habitual– o RGB. En ambos casos se trata de expresar las
+        proporciones de tres colores básicos: rojo, verde y azul.
+        <br>
+        <br>
+        Los valores hexadecimales de los tres colores se expresan de la siguiente manera:
+        <ul>
+            <li>Rojo: color:#ff0000;</li>
+            <li>Verde: color:#00ff00;</li>
+            <li>Azul: color:#0000ff;</li>
+        </ul>
+        Los mismos colores, expresados con los valores RGB (red, green, blue), son los siguientes:
+        <ul>
+            <li>Rojo: color:rgb(255,0,0);</li>
+            <li>Verde: color:rgb(0,255,0);</li>
+            <li>Azul: color:rgb(0,0,255);</li>
+        </ul>
+        Todos los colores se expresan mediante combinaciones de estos tres colores básicos. Existen muchos
+        programas que proporcionan los valores de todos los colores que el usuario puede componer. También
+        en internet existen muchas páginas con los Códigos de colores.
+        <br>
+        <br>
+        Los colores más básicos pueden especificarse sin código, simplemente escribiendo la palabra
+        correspondiente (por supuesto en inglés). Por ejemplo: &lt;FONT COLOR=”blue”&gt;…&lt;/FONT&gt;, &lt;FONT
+        COLOR=”red”&gt;…&lt;/FONT&gt;, etc.
+        <br>
+        <br>
+        Se puede especificar el tamaño de la fuente con la etiqueta &lt;FONT SIZE=”?”>…&lt;/FONT>. El valor del
+        tamaño (“?”) deseado puede suministrarse de manera absoluta (un número del 1 al 7) o relativa (+1,
+        +2, -1, -2, etc., teniendo en cuenta que el valor por defecto es 3).
+        <br>
+        <br>
+        Todas estas etiquetas se pueden combinar, de modo que con una sola se controla, por ejemplo, el
+        tipo, el tamaño y el color de los caracteres: &lt;FONT FACE=”Arial” COLOR=”#0000FF”
+        SIZE=”5″&gt;…&lt;/FONT&gt;.
+        </p>
+        <h2>
+            Vinculos o enlaces
+        </h2>
+        <p>
+            un vínculo o enlace (también conocido como hipervínculo o link) es un elemento de un documento electrónico
+            que está relacionado con otro recurso y que, al formar parte de una red de documentos, posibilita la
+            navegación. Los vínculos pueden ser de texto, de imagen, internos (dentro de la misma página), entre
+            otros.
+            <br>
+            Para crear vínculos se utiliza la etiqueta &lt;a&gt; seguida del atributo "href" que indica la URL a la que
+            se va a enlazar y el texto visible para el usuario.
+            <br>
+            Ejemplo: &lt;a href="https://www.ejemplo.com"&gt;Enlace de ejemplo&lt;/a&gt;
+            <br>
+            El destino de un hiperenlace puede ser de tres tipos diferentes:
+        <ul>
+            <li><strong>Enlace externo</strong>:otro documento HTML situado en un ordenador remoto.</li>
+            <li><strong>Enlace Local</strong>:otro documento HTML situado en el mismo ordenador.</li>
+            <li><strong>Ancla</strong>:otro lugar dentro del mismo documento HTML.</li>
+        </ul>
+        <a href="https://www.facebook.com">Facebook</a>
+        <a href="https://www.instagram.com">Instagram</a>
+        <a href="https://www.twitter.com">Twitter</a>
+        </p>
+        <h2>
+            Listas
+        </h2>
+        <p>
+            Para crear listas, HTML proporciona dos tipos: listas ordenadas (&lt;ol&gt;) y listas desordenadas
+            (&lt;ul&gt;).
+            <br>Ejemplo de lista desordenada:
+        <ul>
+            <li>Elemento 1</li>
+            <li>Elemento 2</li>
+            <li>Elemento 3</li>
+        </ul>
+        Ejemplo de lista ordenada:
+        <ol>
+            <li>Primer elemento</li>
+            <li>Segundo elemento</li>
+            <li>Tercer elemento</li>
+        </ol>
+        Tambien se puede crear un hibrido:
+        <ul>
+            <li>Elemento 1</li>
+            <ol>
+                <li>Primer elemento</li>
+            </ol>
+        </ul>
+        Una vez definido el tipo de lista deseada, los elementos que la componen se marcan de distinta manera según el
+        tipo:
+        <ul>
+            <li>En las listas ordenadas (OL…/OL) o no ordenadas (UL…/UL), cada elemento de dicha lista se marca con la
+                etiqueta LI…/LI (list item).</li>
+            <li>En las listas de definición (DL…/DL), se utilizan dos: cada elemento que se define se marca con DT…/DT y
+                el texto de cada definición se marca con DD…/DD. Esta etiqueta se puede repetir si se necesita
+                introducir
+                varios elementos de definición.</li>
+            <li>Las listas se pueden encajar unas dentro de otras, además de con el resto de las etiquetas disponibles.
+            </li>
+        </ul>
+        </p>
+        <p>
+            Para agregar imágenes, se utiliza la etiqueta &lt;img&gt; con el atributo "src" que especifica la ruta de la
+            imagen y el atributo "alt" que proporciona un texto alternativo para la imagen en caso de que no se pueda
+            cargar.
+            <br>Ejemplo: &lt;img src="imagen.jpg" alt="Descripción de la imagen"&gt;
+        </p>
+        <center><img src="images/ElementosBasicos.png" height="50%" width="50%"></img></center>
+        <p>
+            Las tablas en HTML se crean utilizando las etiquetas &lt;table&gt;, &lt;tr&gt; para las filas y &lt;td&gt;
+            para las celdas.
+            <br>Ejemplo:
+        <table border="1">
+            <tr>
+                <td>Celda 1</td>
+                <td>Celda 2</td>
+            </tr>
+            <tr>
+                <td>Celda 3</td>
+                <td>Celda 4</td>
+            </tr>
+        </table>
+        </p>
+        <p>
+            Para incrustar aplicaciones o contenido multimedia, como videos, se utilizan etiquetas específicas como
+            &lt;iframe&gt;, &lt;embed&gt; o &lt;object&gt;, dependiendo del tipo de contenido y de la plataforma que se
+            esté utilizando.
+        <ul>
+            <li>
+                Ejemplo de incrustación de un video de YouTube con la etiqueta &lt;iframe&gt;:
+                &lt;iframe width="560" height="315" src="https://www.youtube.com/embed/TU_ID_DE_VIDEO" frameborder="0"
+                allowfullscreen&gt;&lt;/iframe&gt;
+            </li>
+            <li>
+                Ejemplo de incrustación de un mp3 con la etiqueta &lt;audio&gt;:
+                &lt;audio controls&gt;&lt;source src="ruta_del_archivo.mp3" type="audio/mpeg"&gt;&lt;/audio&gt;
+            </li>
+            <li>
+                Ejemplo de incrustación de un pdf con la etiqueta &lt;embed&gt;:
+                &lt;embed src="ruta_del_archivo.pdf" type="application/pdf" width="100%" height="600px" /&gt;
+            </li>
+        </ul>
+        </p>
+        <p>
+            Además de estos elementos, HTML también permite la creación de formularios (&lt;form&gt;), campos de entrada
+            de texto (&lt;input&gt;), botones (&lt;button&gt;) y otros elementos interactivos para interactuar con el
+            usuario.
+        </p>
+        <center><audio controls>
+                <source src="" type="audio/mpeg">
+            </audio></center>
+        <center><embed src="C:\Users\XxGho\Documents\Escuela\7° Semestre\Programacion Web\AEB-1055-Programacion web.pdf"
+                type="application/pdf" width="100%" height="100%"></center>
+        <CENTER><iframe width="560" height="315"
+                src="https://www.youtube.com/embed/fhWGKNQ5KVY?si=8tS0GGWHa6k5hHx6&amp;controls=0"
+                title="YouTube video player" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen></iframe></CENTER>
+    </div>
+</body>
+
+</html>

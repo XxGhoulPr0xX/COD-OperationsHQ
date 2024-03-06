@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Introducción a HTML, XML y CSS">
+    <meta name="keywords" content="HTML, XML, CSS, introducción">
+    <title>Introducción a HTML, XML y CSS</title>
+    <link rel="stylesheet" href="assets/css/main.css">
+</head>
+
+<body>
+    <div class="Main">
+        <a href="Temario.html">Regresar al temario</a>
+        <header>
+            <h1>
+                Selectores
+            </h1>
+        </header>
+        <h2>1. Selector de Elemento</h2>
+        <p>Selecciona todos los elementos que coinciden con un nombre de etiqueta específico.</p>
+        <div class="CajaCodigo">
+            h1 {
+            color: blue;
+            }
+        </div>
+        <h2>2. Selector de Clase</h2>
+        <p>Selecciona todos los elementos que tienen un atributo de clase específico.</p>
+        <div class="CajaCodigo">
+            .destacado {
+            font-weight: bold;
+            }
+        </div>
+        <h2>3. Selector de ID</h2>
+        <p>Selecciona un elemento con un atributo de ID específico.</p>
+        <div class="CajaCodigo">
+            #encabezado {
+            background-color: gray;
+            }
+        </div>
+
+        <h2>4. Selector Universal</h2>
+        <p>Selecciona todos los elementos en el documento.</p>
+        <div class="CajaCodigo">
+            * {
+            margin: 0;
+            padding: 0;
+            }
+        </div>
+
+        <h2>5. Selector de Atributo</h2>
+        <p>Selecciona elementos que tienen un atributo específico.</p>
+        <div class="CajaCodigo">
+            [type="text"] {
+            border: 1px solid black;
+            }
+        </div>
+
+        <h2>6. Selector de Combinación</h2>
+        <p>Selecciona elementos basados en su relación con otros elementos.</p>
+        <div class="CajaCodigo">
+            p + p {
+            margin-top: 10px;
+            }
+        </div>
+
+        <h2>7. Selector de Pseudo-clase</h2>
+        <p>Selecciona elementos en función de su estado o posición en relación con el documento.</p>
+        <div class="CajaCodigo">
+            a:hover {
+            text-decoration: underline;
+            }
+        </div>
+
+        <h2>8. Selector de Pseudo-elemento</h2>
+        <p>Selecciona partes específicas de un elemento que no están representadas por clases o IDs.</p>
+        <div class="CajaCodigo">
+            p::first-line {
+            font-weight: bold;
+            }
+        </div>
+        <center><iframe width="560" height="315"
+                src="https://www.youtube.com/embed/uqkj7HQ7ids?si=KemMwU8V8fAVLEdT&amp;controls=0"
+                title="YouTube video player" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen></iframe></center>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="assets/css/main.css">
+</head>
+
+<body>
+    <div class="Main">
+        <a href="Temario.html">Regresar al temario</a>
+        <header>
+            <h1>Lenguajes de presentación en documentos Web</h1>
+        </header>
+        Los lenguajes de presentación desempeñan un papel fundamental en la creación de documentos web, permitiendo
+        a los desarrolladores definir la apariencia y el estilo visual de las páginas.
+        exploraremos los lenguajes de presentación más utilizados en el desarrollo web, incluyendo CSS (Cascading
+        Style Sheets), SASS (Syntactically Awesome Style Sheets), LESS (Leaner Style Sheets), y Stylus. Analizaremos
+        sus características, ventajas, desventajas y ejemplos de uso.
+        <br><br>
+        <strong>CSS (Cascading Style Sheets)</strong>
+        <br><br>
+        <strong>Características principales:</strong>
+        <ul>
+            <li>CSS es el lenguaje de presentación más utilizado en el desarrollo web.</li>
+            <li>Permite definir estilos para elementos HTML, como colores, fuentes, márgenes, bordes y diseños.</li>
+            <li>Utiliza una sintaxis sencilla basada en reglas que especifican propiedades y valores.</li>
+            <li>Proporciona la capacidad de aplicar estilos de manera selectiva a través de selectores y clases.</li>
+        </ul>
+
+        <STRONG>Ventajas:</STRONG>
+        <ul>
+            <li>Separación de la estructura del contenido y el estilo de presentación, lo que facilita el mantenimiento
+                y
+                la actualización del sitio web.</li>
+            <li>Mayor control sobre la apariencia y el diseño de las páginas web.</li>
+            <li>Amplia compatibilidad con navegadores web y dispositivos.</li>
+        </ul>
+        <strong>Desventajas:</strong>
+        <ul>
+            <li>Curva de aprendizaje inicial para dominar todas las características y mejores prácticas de CSS.</li>
+            <li>Puede ser propenso a la repetición de código y complejidad en proyectos grandes y complejos.</li>
+        </ul>
+        <strong>Ejemplo de uso de css:</strong>
+        <div class="CajaCodigo">
+            /* Estilo para el encabezado */
+            h1 {
+            color: #333;
+            font-size: 24px;
+            text-align: center;
+            }
+
+            /* Estilo para los párrafos */
+            p {
+            color: #666;
+            font-size: 16px;
+            line-height: 1.5;
+            }
+
+            /* Estilo para los enlaces */
+            a {
+            color: #007bff;
+            text-decoration: none;
+            }
+        </div>
+        <br>
+        <STRONG>SASS (Syntactically Awesome Style Sheets)</STRONG>
+        <strong>Características principales:</strong>
+        <ul>
+            <li>SASS es un preprocesador CSS que extiende la sintaxis de CSS con características adicionales.</li>
+            <li>Introduce conceptos como variables, anidamiento, mixins y herencia, que facilitan la escritura y el
+                mantenimiento del código CSS.</li>
+            <li>Utiliza archivos .scss o .sass para escribir estilos, que luego se compilan en CSS estándar.</li>
+        </ul>
+        <strong>Ventajas</strong>
+        <ul>
+            <li>Mayor modularidad y reutilización de código a través de mixins y herencia.</li>
+            <li>Posibilidad de utilizar variables para definir valores comunes, lo que facilita la personalización y la
+                coherencia del diseño.</li>
+            <li>Mayor legibilidad y organización del código gracias al anidamiento de selectores y bloques.</li>
+        </ul>
+        <strong>Desventajas:</strong>
+        <ul>
+            <li>Requiere una fase de compilación para generar los archivos CSS, lo que añade complejidad al proceso de
+                desarrollo.</li>
+            <li>Puede generar archivos CSS más grandes debido a la expansión de funciones y mixins durante la
+                compilación.</li>
+        </ul>
+        <strong>Ejemplo de uso scss:</strong>
+        <div class="CajaCodigo">
+            /* Definición de variables */
+            $primary-color: #007bff;
+            $secondary-color: #6c757d;
+
+            /* Estilo para el encabezado */
+            h1 {
+            color: $primary-color;
+            font-size: 24px;
+            text-align: center;
+            }
+
+            /* Estilo para los párrafos */
+            p {
+            color: $secondary-color;
+            font-size: 16px;
+            line-height: 1.5;
+            }
+        </div>
+        <br>
+        <strong>LESS (Leaner Style Sheets)</strong>
+        <strong>Características principales:</strong>
+        <ul>
+            <li>LESS es otro preprocesador CSS que proporciona características adicionales y una sintaxis simplificada.
+            </li>
+            <li>Similar a SASS, LESS introduce variables, mixins, anidamiento y operaciones matemáticas en CSS.</li>
+            <li>Utiliza archivos .less para escribir estilos, que se compilan en CSS estándar durante el proceso de
+                construcción.</li>
+        </ul>
+        <strong>Ventajas</strong>
+        <ul>
+            <li>Sintaxis simplificada en comparación con CSS estándar, lo que facilita la transición y adopción por
+                parte
+                de los desarrolladores.</li>
+            <li>Mayor organización y mantenibilidad del código gracias al uso de variables y anidamiento de estilos.
+            </li>
+            <li>Compatible con la mayoría de los marcos de trabajo de desarrollo web y herramientas de construcción.
+            </li>
+        </ul>
+        <strong>Desventajas</strong>
+        <ul>
+            <li>Requiere una fase de compilación similar a SASS, lo que puede aumentar la complejidad del flujo de
+                trabajo
+                de desarrollo.</li>
+            <li>Menos popular y menos soporte de la comunidad en comparación con SASS.</li>
+        </ul>
+        <div class="CajaCodigo">
+            *Ejemplo de uso:*
+            less
+            /* Definición de variables */
+            @primary-color: #007bff;
+            @secondary-color: #6c757d;
+
+            /* Estilo para el encabezado */
+            h1 {
+            color: @primary-color;
+            font-size: 24px;
+            text-align: center;
+            }
+
+            /* Estilo para los párrafos */
+            p {
+            color: @secondary-color;
+            font-size: 16px;
+            line-height: 1.5;
+            }
+        </div>
+        <br>
+        <strong>Stylus</strong>
+        <strong>Características principales:</strong>
+        <ul>
+            <li>Stylus es otro preprocesador CSS que se destaca por su sintaxis minimalista y flexible.</li>
+            <li>Ofrece características avanzadas como operaciones matemáticas, variables, mixins y funciones.</li>
+            <li>Utiliza una sintaxis basada en la indentación en lugar de llaves y punto y coma, lo que lo hace más
+                conciso y legible.</li>
+        </ul>
+        <strong>Ventajas</strong>
+        <ul>
+            <li>Sintaxis minimalista que reduce la cantidad de caracteres necesarios para escribir estilos.</li>
+            <li>Mayor flexibilidad y expresividad en comparación con otros preprocesadores, lo que permite escribir
+                código
+                más conciso y legible.</li>
+            <li>Integración sencilla con sistemas de compilación y frameworks de desarrollo web.</li>
+        </ul>
+        <strong>Desventajas</strong>
+        <ul>
+            <li>Curva de aprendizaje más pronunciada debido a su sintaxis única y características avanzadas.</li>
+            <li>Menos documentación y recursos disponibles en comparación con preprocesadores más establecidos como SASS
+                y
+                LESS.</li>
+        </ul>
+        <strong>Ejemplo de uso stylus:</strong>
+        <div class="CajaCodigo">
+            // Definición de variables
+            primary-color = #007bff
+            secondary-color = #6c757d
+
+            // Estilo para el encabezado
+            h1
+            color: primary-color
+            font-size: 24px
+            text-align: center
+
+            // Estilo para los párrafos
+            p
+            color: secondary-color
+            font-size: 16px
+            line-height: 1.5
+        </div>
+        <br>
+        <center><img src="images/LenguajesDePresentacion.jpeg" height="50%" width="50%"></img></center>
+        <center><iframe width="560" height="315" src="https://www.youtube.com/embed/TlWlyTejldg?si=38KJEnvnDxH7CGKa"
+            title="YouTube video player" frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen></iframe></center>
+        </p>
+    </div>
+</body>
+
+</html>

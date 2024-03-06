@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="assets/css/main.css">
+</head>
+
+<body>
+    <div class="Main">
+        <a href="Temario.html">Regresar al temario</a>
+        <header>
+            <h1>
+                Formularios
+            </h1>
+        </header>
+        <p>
+            Los formularios en HTML son una parte esencial de la interacción entre un usuario y un sitio web o
+            aplicación. Permiten a los usuarios introducir datos, que generalmente se envían a un servidor web para su
+            procesamiento y almacenamiento.
+            <br>
+        <h2>Elementos básicos de un formulario HTML</h2>
+        <ul>
+            <li>&lt;form&gt;: Es el contenedor de los controles del formulario.</li>
+            <li>&lt;input&gt;: Crea campos de texto de una o varias líneas, cajas desplegables, botones, casillas de
+                verificación o botones de opción.</li>
+            <li>&lt;label&gt;: Proporciona una descripción textual de los controles de formulario.</li>
+            <h3>Atributos</h3>
+            <li>action="": Entre comillas se indica la acción a realizar al enviar el formulario. En general se indicará
+                el nombre de un fichero alojado en el servidor, el cual se encargará de procesar la información. Aunque
+                también se le puede indicar una dirección de correo para que envíe directamente todo el contenido, de la
+                forma: mailto:direccion_de_correo.</li>
+            <li>method="" (post o get): Indica el método de transferencia de las variables. El método "post" envía los
+                datos de forma no visible, mientras que el método "get" los adjunta a la URL a la que se redirige.</li>
+            <li>enctype= "": Especifica el tipo de codificación de la información enviada. Con method="get" no se
+                realiza codificación, solo se cambian caracteres especiales como el espacio, por lo que no es necesario
+                indicar enctype. Cuando el valor del atributo "method" es "post", podemos utilizar los siguientes
+                valores:</li>
+            <ul>
+                <li>application/x-www-form-urlencoded: Es el valor predeterminado. Codifica todos los caracteres antes
+                    de enviarlos.</li>
+                <li>multipart/form-data: Es requerido al enviar archivos mediante un formulario. No codifica la
+                    información.</li>
+                <li>text/plain: No codifica la información, solo cambia los espacios por el símbolo "+".</li>
+            </ul>
+        </ul>
+        <center><img src="images/Formularios.jpeg" height="50%" width="50%"></img></center>
+        <h2>Diseño de formularios</h2>
+        Antes de comenzar a escribir código, es importante pensar en tu formulario. Diseñar una maqueta rápida te
+        ayudará a definir el conjunto de datos adecuado que deseas pedirle al usuario que introduzca. Recuerda que
+        cuanto más grande es tu formulario, más te arriesgas a frustrar a las personas y perder usuarios. Debe ser
+        simple y conciso: solicita solo los datos que necesitas.
+        </p>
+        <h3>Ejemplo</h3>
+        <div class="CajaCodigo">
+            &lt;form action="ruta_del_procesador.php" method="post"&gt;
+            &lt;label for="nombre"&gt;Nombre:&lt;/label>&lt;br&gt;
+            &lt;input type="text" id="nombre" name="nombre"&gt;
+            &lt;input type="submit" value="Enviar"&gt;
+            &lt;/form&gt;
+        </div>
+        <br>
+        <form method="post">
+            <label for="nombre">Nombre</label>
+            <input type="text" id="nombre" name="nombre"></input>
+            <input type="submit" value="Enviar">
+        </form>
+        <div class="CajaCodigo">
+            &lt;form action="" method=""&gt;
+                &lt;ul&gt;
+                    &lt;li&gt;
+                        &lt;label for="name"&gt;Nombre:&lt;label&gt;
+                        &lt;input type="text" id="name" name="user_name"/&gt;
+                    &lt;/li&gt;
+                    &lt;li&gt;
+                        &lt;label for="mail"&gt;Correo electrónico:&lt;label&gt;
+                        &lt;input type="email" id="mail" name="user_mail"/&gt;
+                    &lt;/li&gt;
+                    &lt;li&gt;
+                        &lt;label for="msg"&gt;Mensaje::&lt;label&gt;
+                        &lt;input type="msg" name="user_message"/&gt;
+                    &lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/form&gt;
+        </div>
+        <form action="/my-handling-form-page" method="post">
+            <ul>
+                <li>
+                    <label for="name">Nombre:</label>
+                    <input type="text" id="name" name="user_name" />
+                </li>
+                <li>
+                    <label for="mail">Correo electrónico:</label>
+                    <input type="email" id="mail" name="user_mail" />
+                </li>
+                <li>
+                    <label for="msg">Mensaje:</label>
+                    <textarea id="msg" name="user_message"></textarea>
+                </li>
+            </ul>
+        </form>
+        <div class="CajaCodigo">
+            &lt;form action="" method=""&gt;
+                &lt;fieldset&gt;
+                    &lt;legend&gt;Opcion 1&lt;/legend&gt;
+                    &lt;input type="radio" name="radio" id="radio"&gt;
+                    &lt;label for="radio"&gt;Clic Aquí&lt;/label&gt;
+                    &lt;legend&gt;Opcion 2&lt;/legend&gt;
+                    &lt;input type="radio" name="radio" id="radio"&gt;
+                    &lt;label for="radio"&gt;Clic Aquí&lt;/label&gt;
+                &lt;/fieldset&gt;
+            &lt;/form&gt;
+        </div>
+        <form action="" method="post">
+            <fieldset>
+                <legend>Opcion 1</legend>
+                <input type="radio" name="radio" id="radio" />
+                <label for="radio">Clic aquí</label>
+                <legend>Opcion 2</legend>
+                <input type="radio" name="radio" id="radio" />
+                <label for="radio">Clic aquí</label>
+            </fieldset>
+        </form>
+        <br>
+        <br>
+        Este formulario contiene un campo de texto para el nombre del usuario y un botón de envío. Cuando el usuario
+        hace clic en el botón de envío, los datos del formulario se envían al “agente procesador” especificado en el
+        atributo action del elemento &lt;form&gt;, utilizando el método HTTP especificado en el atributo method.
+        <br>
+        <center><iframe width="560" height="315" src="https://www.youtube.com/embed/QDOfODwsfuQ?si=zmc40oSKGLXRT4re"
+                title="YouTube video player" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen></iframe></center>
+    </div>
+</body>
+
+</html>

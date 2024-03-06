@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="assets/js/EPJS.js"></script>
+    <link rel="stylesheet" type="text/css" href="assets/css/main.css">
+</head>
+<body>
+    <div class="Main">
+        <button class="boton" onclick="HolaMundo()">Hola Mundo</button>
+        <button class="boton" onclick="SumaSimple()">Suma</button>
+        <button class="boton" onclick="Ejercicio4()">Ejercicio4</button>
+        <button class="boton" onclick="Presentacion()">Presentacion</button>
+        <button class="boton" onclick="Multiplicacion()">Multiplicación</button>
+        <button class="boton" onclick="Usuario()">Usuario</button>
+        <button class="boton" onclick="conversion()">Conversion</button>
+        <button class="boton" onclick="sumaPorUsuario()">Suma dada por el usuario</button>
+        <button class="boton" onclick="SumaCondicional()">Suma condicional</button>
+        <script>
+            const alpha = new EPJS();
+            function HolaMundo() {
+                alpha.HolaMundo();
+            }
+            function SumaSimple(){
+                alpha.SumaSimple();
+            }
+            function Presentacion(){
+                alpha.Presentacion();
+            }
+            function Ejercicio4(){
+                alpha.Ejercicio4();
+            }
+            function Multiplicacion(){
+                alpha.OperacionMulti();
+            }
+            function Usuario(){
+                alpha.IngresarUsuario();
+            }
+            function conversion(){
+                alpha.ParseInt();
+            }
+            function sumaPorUsuario(){
+                alpha.SumarPorUsuario()
+            }
+            function SumaCondicional(){
+                alpha.SumaCondicional()
+            }
+        </script>
+    </div>
+</body>
+</html>

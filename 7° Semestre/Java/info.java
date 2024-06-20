@@ -1,4 +1,3 @@
-
 import com.mongodb.DB;
 import com.mongodb.DBObject;
 import com.mongodb.MongoClient;
@@ -156,10 +155,9 @@ public class info extends javax.swing.JFrame {
     }//GEN-LAST:event_txtResultadoActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        String id=txtBuscar.getText();
         MongoClient mongoClient = BaseDeDatos.conectar();
         DB db = mongoClient.getDB("Musica");
-        List<DBObject> resultados = BaseDeDatos.consultarMusicaPorId(db,id);
+        List<DBObject> resultados = BaseDeDatos.consultarMusica(db);
         StringBuilder resultadoString = new StringBuilder();
         int maxLength = 0;
         for (DBObject resultado : resultados) {

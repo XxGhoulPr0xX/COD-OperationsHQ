@@ -11,6 +11,7 @@ public class ManejoTXT {
 
     public String convertirATextoBinario() throws IOException {
         StringBuilder binaryContent = new StringBuilder();
+
         try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
             String line;
             while ((line = br.readLine()) != null) {
@@ -21,11 +22,14 @@ public class ManejoTXT {
                 binaryContent.append("\n");
             }
         }
+
         return binaryContent.toString();
     }
+
     public int sumarBinarios(String binaryText) {
         String[] lines = binaryText.split("\n");
         int sum = 0;
+
         for (String line : lines) {
             String[] binaries = line.split(" ");
             for (String binary : binaries) {
@@ -34,9 +38,9 @@ public class ManejoTXT {
                 }
             }
         }
+
         return sum;
     }
-
     public int conversion(int suma) {
         double tresTan30 = 3 * Math.tan(Math.toRadians(30));
         double resultado = tresTan30 * suma;
@@ -46,6 +50,7 @@ public class ManejoTXT {
     public String[] extraerDatos(String texto) {
         String[] lineas = texto.split("\n");
         String[] datos = new String[4];
+
         for (String linea : lineas) {
             String[] partes = linea.split(":");
             if (partes.length == 2) {

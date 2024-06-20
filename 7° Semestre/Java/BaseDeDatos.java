@@ -17,6 +17,7 @@ public static MongoClient conectar() {
     }
 }
 
+
     public static void insertarMusica(DB db, String id, String formato, String autor, int anio, String titulo) {
         DBCollection coll = db.getCollection("Musica");
         BasicDBObject doc = new BasicDBObject("_id", id)
@@ -27,26 +28,25 @@ public static MongoClient conectar() {
         coll.insert(doc);
     }
 
-        public static List<DBObject> consultarMusicaPorId(DB db, String id) {
-            List<DBObject> resultados = new ArrayList<>();
-            DBCollection coll = db.getCollection("Musica");
-            BasicDBObject query = new BasicDBObject("_id", id); // Filtro por el campo _id
-            DBCursor cursor = coll.find(query);
-            while (cursor.hasNext()) {
-                resultados.add(cursor.next());
-            }
-            return resultados;
+    public static List<DBObject> consultarMusica(DB db) {
+        List<DBObject> resultados = new ArrayList<>();
+        DBCollection coll = db.getCollection("Musica");
+        DBCursor cursor = coll.find();
+        while (cursor.hasNext()) {
+            resultados.add(cursor.next());
         }
-
+        return resultados;
+    }
 
     public static void main(String args[]) throws UnknownHostException {
         try {
             MongoClient mongoClient = conectar();
             DB db = mongoClient.getDB("Musica");
-            List<DBObject> resultados = consultarMusicaPorId(db,"14964");
+            List<DBObject> resultados = consultarMusica(db);
             for (DBObject resultado : resultados) {
                 System.out.println(resultado);
             }
+
             mongoClient.close();
         } catch (MongoException e) {
             System.err.println("Error al interactuar con la base de datos: " + e.getMessage());

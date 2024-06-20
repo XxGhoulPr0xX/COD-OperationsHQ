@@ -12,9 +12,15 @@ class TreeBuilder(Transformer):
 
     def div(self, items):
         return ['/', items[0], items[1]]
+    
+    def pow(self, items):  # Método para manejar la potencia
+        return ['^', items[0], items[1]]
+    
+    def sqrt(self, items):  # Método para manejar la raíz cuadrada
+        return ['sqrt', items[0],items[1]]
 
     def neg(self, items):
-        return ['-', items[0]]
+        return ['-', items[0],items[1]]
 
     def number(self, items):
         return float(items[0])
@@ -23,9 +29,39 @@ class TreeBuilder(Transformer):
         return items[0]
 
 class ExpressionTree:
-    def __init__(self, grammar, start='start', parser='lalr'):
-        self.grammar = grammar
-        self.parser = Lark(grammar, start=start, parser=parser, transformer=TreeBuilder())
+    def __init__(self, start='start', parser='lalr'):
+        self.grammar = '''
+            ?start: sum
+
+            ?sum: product
+                | sum "+" product   -> add
+                | sum "-" product   -> sub
+
+            ?product: power
+                | product "*" power  -> mul
+                | product "/" power  -> div
+
+            ?power: atom
+                | atom "^" power  -> pow
+                | atom "sqrt" power   -> sqrt
+
+            ?atom: NUMBER          -> number
+                | IDENTIFIER      -> identifier
+                | "-" atom        -> neg
+                | "(" sum ")"
+                | "[" sum "]"
+                | "{" sum "}"
+
+            %import common.NUMBER
+            %import common.LETTER
+            %import common.WS_INLINE
+            %ignore WS_INLINE
+
+            SQRT: "sqrt"
+
+            IDENTIFIER: LETTER+
+        '''
+        self.parser = Lark(self.grammar, start=start, parser=parser, transformer=TreeBuilder())
 
     def build_tree(self, expression):
         return self.parser.parse(expression)
@@ -38,32 +74,3 @@ class ExpressionTree:
         else:
             print("   " * level + str(tree))
 
-expresion = input("Ingrese una expresión matemática: ")
-
-grammar = '''
-    ?start: sum
-
-    ?sum: product
-        | sum "+" product   -> add
-        | sum "-" product   -> sub
-
-    ?product: atom
-        | product "*" atom  -> mul
-        | product "/" atom  -> div
-
-    ?atom: NUMBER          -> number
-        | IDENTIFIER      -> identifier
-        | "-" atom        -> neg
-        | "(" sum ")"
-
-    %import common.NUMBER
-    %import common.LETTER
-    %import common.WS_INLINE
-    %ignore WS_INLINE
-
-    IDENTIFIER: LETTER+
-'''
-expression_tree = ExpressionTree(grammar)
-arbol = expression_tree.build_tree(expresion)
-print("Árbol de expresiones:")
-expression_tree.print_tree(arbol)
